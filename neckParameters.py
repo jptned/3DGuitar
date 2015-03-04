@@ -10,6 +10,15 @@ import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
+        try:
+            self.didRun
+        except NameError:
+            self.didRun = False
+
+        if didRun:
+            print ('Did run')
+        else:
+            print ('Did not run')
         Dialog.setObjectName("3D Guitar Designer")
         Dialog.resize(527, 420)
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
@@ -389,7 +398,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "3D Guitar Designer"))
         self.label_fretboardLength_13.setText(_translate("Dialog", "Length"))
         self.bodyLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Total length of the body</p></body></html>"))
         self.label_fretboardLength_11.setText(_translate("Dialog", "Width"))
@@ -447,7 +456,9 @@ class Ui_Dialog(object):
         self.create.setText(_translate("Dialog", "Generate"))
 
     def onSubmit(self):
-        #try:
+        self.didRun = True
+
+        try:
             # Variables fretboard
             fretboardLength         = self.fretboardLength.value() # Length between body and end of fretboard - x
             fretboardWidthWide      = self.fretboardWidthWide.value() # Width of fretboard at side of body - x
@@ -499,9 +510,9 @@ class Ui_Dialog(object):
             pickupDepth             = self.pickupDepth.value() # - x
             pickupNeckPosX          = self.pickupNeckPosX.value() #Position from top of the body - x
             pickupBodyPosX          = self.pickupBodyPosX.value() #Position from top of the body - x
-        #except:
-        #    print "Error! Values must be valid numbers!"
-        #else:
+        except:
+            print "Error! Values must be valid numbers!"
+        else:
             # Initialize
             doc = FreeCAD.newDocument()
             zero = FreeCAD.Vector(0,0,0)
