@@ -10,13 +10,6 @@ import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        if not(hasattr(self, 'didRun')):
-            self.didRun = False
-
-        if didRun:
-            print ('Did run')
-        else:
-            print ('Did not run')
         Dialog.setObjectName("3D Guitar Designer")
         Dialog.resize(527, 420)
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
