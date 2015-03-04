@@ -447,7 +447,7 @@ class Ui_Dialog(object):
         self.create.setText(_translate("Dialog", "Generate"))
 
     def onSubmit(self):
-        try:
+        #try:
             # Variables fretboard
             fretboardLength         = float(self.fretboardLength.value) # Length between body and end of fretboard - x
             fretboardWidthWide      = float(self.fretboardWidthWide.value) # Width of fretboard at side of body - x
@@ -499,9 +499,9 @@ class Ui_Dialog(object):
             pickupDepth             = float(self.pickupDepth.value) # - x
             pickupNeckPosX          = float(self.pickupNeckPosX.value) #Position from top of the body - x
             pickupBodyPosX          = float(self.pickupBodyPosX.value) #Position from top of the body - x
-        except:
-            print "Error! Values must be valid numbers!"
-        else:
+        #except:
+        #    print "Error! Values must be valid numbers!"
+        #else:
             # Initialize
             doc = FreeCAD.newDocument()
             zero = FreeCAD.Vector(0,0,0)
