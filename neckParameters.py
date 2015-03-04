@@ -399,7 +399,7 @@ class Ui_Dialog(object):
         self.label_fretboardLength_14.setText(_translate("Dialog", "Arc ratio"))
         self.arcRatio.setToolTip(_translate("Dialog", "<html><head/><body><p>Sets ratio between upper and lower arc (1:arcRatio)</p></body></html>"))
         self.label_fretboardLength_12.setText(_translate("Dialog", "Connect angle (degrees)"))
-        self.bodyConnectAngle.setToolTip(_translate("Dialog", "<html><head/><body><p>The length of the middle circle part in degrees</p></body></html>"))
+        self.bodyConnectAngle.setToolTip(_translate("Dialog", "<html><head/><body><p>The size of the middle circle part in degrees</p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Body"))
         self.label_fretboardLength.setText(_translate("Dialog", "Length"))
         self.fretboardLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Length between body and end of fretboard</p></body></html>"))
