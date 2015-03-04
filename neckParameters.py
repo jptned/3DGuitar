@@ -388,7 +388,7 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        _translate = QtCore.QCoreFreeCADGuilication.translate
+        _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label_fretboardLength_13.setText(_translate("Dialog", "Length"))
         self.bodyLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Total length of the body</p></body></html>"))
