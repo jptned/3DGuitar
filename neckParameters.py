@@ -638,17 +638,20 @@ class Ui_Dialog(object):
             FreeCAD.ActiveDocument.bodyMirrored.Originals = [FreeCAD.ActiveDocument.Pad,]
             FreeCAD.ActiveDocument.bodyMirrored.MirrorPlane = (FreeCAD.ActiveDocument.Body,["V_Axis"])
 
+
+
             # Create cutaway if chosen
             if cutawayType == 0:
                 print "Nothing to do"
-                
+
+
             elif cutawayType == 1:
                 FreeCAD.ActiveDocument.addObject("Part::Cylinder","Cylinder") #Create cylinder
                 FreeCAD.ActiveDocument.ActiveObject.Label = "cutAwayCylinder"
                 FreeCAD.ActiveDocument.Cylinder.Placement=FreeCAD.Placement(FreeCAD.Vector(cutawayRad + fretboardWidthWide + cutawayOffset,bodyLength - cutawayDepth,0), FreeCAD.Rotation(FreeCAD.Vector(0,0,1),0), FreeCAD.Vector(0,0,0))
                 FreeCAD.ActiveDocument.getObject("Cylinder").Radius = cutawayRad
                 FreeCAD.ActiveDocument.getObject("Cylinder").Height = bodyLength * 10
-                
+
                 #Cut
                 FreeCADGui.activateWorkbench("PartWorkbench")
                 FreeCAD.activeDocument().addObject("Part::Cut","Cut")
@@ -666,25 +669,33 @@ class Ui_Dialog(object):
                 FreeCAD.ActiveDocument.neckPickup.Length = pickupWidth
                 FreeCAD.ActiveDocument.neckPickup.Height = pickupDepth
                 FreeCAD.ActiveDocument.neckPickup.Placement=FreeCAD.Placement(FreeCAD.Vector(-pickupWidth / 2,bodyLength - pickupNeckPosX,bodyThickness - pickupDepth), FreeCAD.Rotation(FreeCAD.Vector(0,0,1),0), FreeCAD.Vector(0,0,0))
-                
+
                 FreeCAD.ActiveDocument.addObject("Part::Box","bodyPickup")
                 FreeCAD.ActiveDocument.ActiveObject.Label = "bodyPickup"
                 FreeCAD.ActiveDocument.bodyPickup.Width = pickupHeight
                 FreeCAD.ActiveDocument.bodyPickup.Length = pickupWidth
                 FreeCAD.ActiveDocument.bodyPickup.Height = pickupDepth
                 FreeCAD.ActiveDocument.bodyPickup.Placement=FreeCAD.Placement(FreeCAD.Vector(-pickupWidth / 2,bodyLength - pickupBodyPosX,bodyThickness - pickupDepth), FreeCAD.Rotation(FreeCAD.Vector(0,0,1),0), FreeCAD.Vector(0,0,0))
-                
+
                 # Cut the pickups
-                FreeCAD.activeDocument().addObject("Part::Cut","Cut001")
-                FreeCAD.activeDocument().Cut001.Base = FreeCAD.activeDocument().Cut
-                FreeCAD.activeDocument().Cut001.Tool = FreeCAD.activeDocument().neckPickup
-                FreeCADGui.activeDocument().hide('Cut')
-                FreeCADGui.activeDocument().hide('neckPickup')
-                
-                FreeCAD.activeDocument().addObject("Part::Cut","guitarBody")
-                FreeCAD.activeDocument().guitarBody.Base = FreeCAD.activeDocument().Cut001
-                FreeCAD.activeDocument().guitarBody.Tool = FreeCAD.activeDocument().bodyPickup
-                FreeCADGui.activeDocument().hide('Cut001')
+                FreeCAD.activeDocument().addObject("Part::Cut","CutPickup")
+                if cutawayType == 0: #If there is no cutaway selected then the name of the element isn't changed
+                    FreeCAD.activeDocument().CutPickup.Base = FreeCAD.activeDocument().bodyMirrored
+                    FreeCAD.activeDocument().CutPickup.Tool = FreeCAD.activeDocument().neckPickup
+                    FreeCADGui.activeDocument().hide('bodyMirrored')
+                    FreeCADGui.activeDocument().hide('neckPickup')
+
+                else:
+                    FreeCAD.activeDocument().CutPickup.Base = FreeCAD.activeDocument().Cut
+                    FreeCAD.activeDocument().CutPickup.Tool = FreeCAD.activeDocument().neckPickup
+                    FreeCADGui.activeDocument().hide('Cut')
+                    FreeCADGui.activeDocument().hide('neckPickup')
+
+
+                FreeCAD.activeDocument().addObject("Part::Cut","FreeCADGuitarBody")
+                FreeCAD.activeDocument().FreeCADGuitarBody.Base = FreeCAD.activeDocument().CutPickup
+                FreeCAD.activeDocument().FreeCADGuitarBody.Tool = FreeCAD.activeDocument().bodyPickup
+                FreeCADGui.activeDocument().hide('CutPickup')
                 FreeCADGui.activeDocument().hide('bodyPickup')
 
 
