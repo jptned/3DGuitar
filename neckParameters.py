@@ -167,7 +167,7 @@ class Ui_Dialog(object):
         self.fretboardRoundingRadius.setMinimum(0.1)
         self.fretboardRoundingRadius.setMaximum(1000.0)
         self.fretboardRoundingRadius.setSingleStep(0.1)
-        self.fretboardRoundingRadius.setProperty("value", 15.0)
+        self.fretboardRoundingRadius.setProperty("value", 3.0)
         self.fretboardRoundingRadius.setObjectName("fretboardRoundingRadius")
         self.verticalLayout_3.addWidget(self.fretboardRoundingRadius)
         self.tabWidget.addTab(self.tab, "")
@@ -716,4 +716,7 @@ class guitarInput():
         d = QtGui.QDialog()
         d.ui = Ui_Dialog()
         d.ui.setupUi(d)
+        d.exec_()
+
+    def reOpen(self):
         d.exec_()

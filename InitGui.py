@@ -1,6 +1,6 @@
 import FreeCAD, FreeCADGui
 
-class Test3D:
+class NewGuitar:
 	"Test command"
 	def Activated(self):
 		import neckParameters
@@ -10,10 +10,10 @@ class Test3D:
 		return {
 			'Pixmap'  : 'Std_Tool1', 
 			'MenuText': '3D Test', 
-			'ToolTip': 'Would be cool'
+			'ToolTip': 'Create new guitar'
 		}
 
-FreeCADGui.addCommand('3D_Test3D', Test3D())
+FreeCADGui.addCommand('3D_NewGuitar', NewGuitar())
 
 class TGD ( Workbench ):
 	"3D Guitar Design Object"
@@ -47,8 +47,8 @@ class TGD ( Workbench ):
 		return "Gui::PythonWorkbench"
 
 	def Initialize(self):
-		self.appendToolbar("3D Guitar Design", ["3D_Test3D"])
-		self.appendMenu("My Tools", ["3D_Test3D"])
+		self.appendToolbar("3D Guitar Design", ["3D_NewGuitar"])
+		self.appendMenu("My Tools", ["3D_NewGuitar"])
 		Log ("Loading MyModule... done\n")
 
 	#def Activated(self):
