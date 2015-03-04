@@ -12,7 +12,7 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         try:
             self.didRun
-        except NameError:
+        except AttributeError:
             self.didRun = False
 
         if didRun:
