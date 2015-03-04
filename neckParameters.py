@@ -10,9 +10,7 @@ import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        try:
-            self.didRun
-        except AttributeError:
+        if !hasattr(self, 'didRun'):
             self.didRun = False
 
         if didRun:
