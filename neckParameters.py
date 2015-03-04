@@ -9,14 +9,14 @@ from PySide import QtCore, QtGui
 import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
-    #def __init__(self):
-    #    self.didRun = false;
+    def __init__(self):
+        self.didRun = False;
 
     def setupUi(self, Dialog):
-        #if (self.didRun):
-        #    print ("Did run!")
-        #else:
-        #    print ("Didn't run!")
+        if (self.didRun):
+            print ("Did run!")
+        else:
+            print ("Didn't run!")
         Dialog.setObjectName("3D Guitar Designer")
         Dialog.resize(527, 420)
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
@@ -559,8 +559,8 @@ class Ui_Dialog(object):
             fretboardR = doc.addObject("Part::Fillet","Fillet")
             fretboardR.Base = fretboard
             __fillets__ = []
-            __fillets__.append((4,3.00,3.00))
-            __fillets__.append((12,3.00,3.00))
+            __fillets__.append((4,fretboardRoundingRadius,fretboardRoundingRadius))
+            __fillets__.append((12,fretboardRoundingRadius,fretboardRoundingRadius))
             fretboardR.Edges = __fillets__
             del __fillets__
             fretboard.ViewObject.Visibility = False
