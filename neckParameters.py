@@ -6,7 +6,7 @@
 #      WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
-import Draft, math, Part, FreeCAD, FreeCADGui
+import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
