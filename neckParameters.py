@@ -34,7 +34,7 @@ class Ui_Dialog(object):
         self.bodyLength.setMinimum(0.1)
         self.bodyLength.setMaximum(10000.0)
         self.bodyLength.setSingleStep(0.1)
-        self.bodyLength.setProperty("value(self)", 800.0)
+        self.bodyLength.setProperty("value", 800.0)
         self.bodyLength.setObjectName("bodyLength")
         self.verticalLayout_2.addWidget(self.bodyLength)
         self.label_fretboardLength_11 = QtGui.QLabel(self.widget)
@@ -47,7 +47,7 @@ class Ui_Dialog(object):
         self.bodyWidth.setMinimum(0.1)
         self.bodyWidth.setMaximum(1000.0)
         self.bodyWidth.setSingleStep(0.1)
-        self.bodyWidth.setProperty("value(self)", 85.0)
+        self.bodyWidth.setProperty("value", 85.0)
         self.bodyWidth.setObjectName("bodyWidth")
         self.verticalLayout_2.addWidget(self.bodyWidth)
         self.label_fretboardLength_10 = QtGui.QLabel(self.widget)
@@ -60,7 +60,7 @@ class Ui_Dialog(object):
         self.bodThickness.setMinimum(0.1)
         self.bodThickness.setMaximum(1000.0)
         self.bodThickness.setSingleStep(0.1)
-        self.bodThickness.setProperty("value(self)", 80.0)
+        self.bodThickness.setProperty("value", 80.0)
         self.bodThickness.setObjectName("bodThickness")
         self.verticalLayout_2.addWidget(self.bodThickness)
         self.label_fretboardLength_14 = QtGui.QLabel(self.widget)
@@ -73,7 +73,7 @@ class Ui_Dialog(object):
         self.arcRatio.setMinimum(0.1)
         self.arcRatio.setMaximum(1000.0)
         self.arcRatio.setSingleStep(0.1)
-        self.arcRatio.setProperty("value(self)", 1.26)
+        self.arcRatio.setProperty("value", 1.26)
         self.arcRatio.setObjectName("arcRatio")
         self.verticalLayout_2.addWidget(self.arcRatio)
         self.label_fretboardLength_12 = QtGui.QLabel(self.widget)
@@ -86,7 +86,7 @@ class Ui_Dialog(object):
         self.bodyConnectAngle.setMinimum(0.0)
         self.bodyConnectAngle.setMaximum(360.0)
         self.bodyConnectAngle.setSingleStep(0.1)
-        self.bodyConnectAngle.setProperty("value(self)", 30.0)
+        self.bodyConnectAngle.setProperty("value", 30.0)
         self.bodyConnectAngle.setObjectName("bodyConnectAngle")
         self.verticalLayout_2.addWidget(self.bodyConnectAngle)
         self.tabWidget.addTab(self.tab_2, "")
@@ -108,7 +108,7 @@ class Ui_Dialog(object):
         self.fretboardLength.setMinimum(0.1)
         self.fretboardLength.setMaximum(1000.0)
         self.fretboardLength.setSingleStep(0.1)
-        self.fretboardLength.setProperty("value(self)", 500.0)
+        self.fretboardLength.setProperty("value", 500.0)
         self.fretboardLength.setObjectName("fretboardLength")
         self.verticalLayout_3.addWidget(self.fretboardLength)
         self.label_fretboardLength_2 = QtGui.QLabel(self.layoutWidget)
@@ -121,7 +121,7 @@ class Ui_Dialog(object):
         self.fretboardWidthNarrow.setMinimum(0.1)
         self.fretboardWidthNarrow.setMaximum(1000.0)
         self.fretboardWidthNarrow.setSingleStep(0.1)
-        self.fretboardWidthNarrow.setProperty("value(self)", 40.0)
+        self.fretboardWidthNarrow.setProperty("value", 40.0)
         self.fretboardWidthNarrow.setObjectName("fretboardWidthNarrow")
         self.verticalLayout_3.addWidget(self.fretboardWidthNarrow)
         self.label_fretboardLength_3 = QtGui.QLabel(self.layoutWidget)
@@ -134,7 +134,7 @@ class Ui_Dialog(object):
         self.fretboardWidthWide.setMinimum(0.1)
         self.fretboardWidthWide.setMaximum(1000.0)
         self.fretboardWidthWide.setSingleStep(0.1)
-        self.fretboardWidthWide.setProperty("value(self)", 15.0)
+        self.fretboardWidthWide.setProperty("value", 15.0)
         self.fretboardWidthWide.setObjectName("fretboardWidthWide")
         self.verticalLayout_3.addWidget(self.fretboardWidthWide)
         self.label_fretboardLength_4 = QtGui.QLabel(self.layoutWidget)
@@ -147,7 +147,7 @@ class Ui_Dialog(object):
         self.fretboardHeight.setMinimum(0.1)
         self.fretboardHeight.setMaximum(1000.0)
         self.fretboardHeight.setSingleStep(0.1)
-        self.fretboardHeight.setProperty("value(self)", 15.0)
+        self.fretboardHeight.setProperty("value", 15.0)
         self.fretboardHeight.setObjectName("fretboardHeight")
         self.verticalLayout_3.addWidget(self.fretboardHeight)
         self.label_fretboardLength_5 = QtGui.QLabel(self.layoutWidget)
@@ -160,7 +160,7 @@ class Ui_Dialog(object):
         self.fretboardRoundingRadius.setMinimum(0.1)
         self.fretboardRoundingRadius.setMaximum(1000.0)
         self.fretboardRoundingRadius.setSingleStep(0.1)
-        self.fretboardRoundingRadius.setProperty("value(self)", 15.0)
+        self.fretboardRoundingRadius.setProperty("value", 15.0)
         self.fretboardRoundingRadius.setObjectName("fretboardRoundingRadius")
         self.verticalLayout_3.addWidget(self.fretboardRoundingRadius)
         self.tabWidget.addTab(self.tab, "")
@@ -182,7 +182,7 @@ class Ui_Dialog(object):
         self.headLength.setMinimum(0.1)
         self.headLength.setMaximum(1000.0)
         self.headLength.setSingleStep(0.1)
-        self.headLength.setProperty("value(self)", 150.0)
+        self.headLength.setProperty("value", 150.0)
         self.headLength.setObjectName("headLength")
         self.verticalLayout_4.addWidget(self.headLength)
         self.label_fretboardLength_6 = QtGui.QLabel(self.layoutWidget1)
@@ -195,7 +195,7 @@ class Ui_Dialog(object):
         self.headWidth.setMinimum(0.1)
         self.headWidth.setMaximum(1000.0)
         self.headWidth.setSingleStep(0.1)
-        self.headWidth.setProperty("value(self)", 80.0)
+        self.headWidth.setProperty("value", 80.0)
         self.headWidth.setObjectName("headWidth")
         self.verticalLayout_4.addWidget(self.headWidth)
         self.label_fretboardLength_9 = QtGui.QLabel(self.layoutWidget1)
@@ -208,7 +208,7 @@ class Ui_Dialog(object):
         self.headHeight.setMinimum(0.1)
         self.headHeight.setMaximum(1000.0)
         self.headHeight.setSingleStep(0.1)
-        self.headHeight.setProperty("value(self)", 15.0)
+        self.headHeight.setProperty("value", 15.0)
         self.headHeight.setObjectName("headHeight")
         self.verticalLayout_4.addWidget(self.headHeight)
         self.label_fretboardLength_7 = QtGui.QLabel(self.layoutWidget1)
@@ -221,7 +221,7 @@ class Ui_Dialog(object):
         self.headMarchLength.setMinimum(0.0)
         self.headMarchLength.setMaximum(100.0)
         self.headMarchLength.setSingleStep(0.1)
-        self.headMarchLength.setProperty("value(self)", 15.0)
+        self.headMarchLength.setProperty("value", 15.0)
         self.headMarchLength.setObjectName("headMarchLength")
         self.verticalLayout_4.addWidget(self.headMarchLength)
         self.tabWidget.addTab(self.tab_3, "")
@@ -243,7 +243,7 @@ class Ui_Dialog(object):
         self.cutawayType.setMinimum(0.0)
         self.cutawayType.setMaximum(1.0)
         self.cutawayType.setSingleStep(1.0)
-        self.cutawayType.setProperty("value(self)", 1.0)
+        self.cutawayType.setProperty("value", 1.0)
         self.cutawayType.setObjectName("cutawayType")
         self.verticalLayout_5.addWidget(self.cutawayType)
         self.label_fretboardLength_16 = QtGui.QLabel(self.widget1)
@@ -256,7 +256,7 @@ class Ui_Dialog(object):
         self.cutawayOffset.setMinimum(0.1)
         self.cutawayOffset.setMaximum(1000.0)
         self.cutawayOffset.setSingleStep(0.1)
-        self.cutawayOffset.setProperty("value(self)", 10.0)
+        self.cutawayOffset.setProperty("value", 10.0)
         self.cutawayOffset.setObjectName("cutawayOffset")
         self.verticalLayout_5.addWidget(self.cutawayOffset)
         self.label_fretboardLength_17 = QtGui.QLabel(self.widget1)
@@ -269,7 +269,7 @@ class Ui_Dialog(object):
         self.cutawayDepth.setMinimum(0.1)
         self.cutawayDepth.setMaximum(1000.0)
         self.cutawayDepth.setSingleStep(0.1)
-        self.cutawayDepth.setProperty("value(self)", 25.0)
+        self.cutawayDepth.setProperty("value", 25.0)
         self.cutawayDepth.setObjectName("cutawayDepth")
         self.verticalLayout_5.addWidget(self.cutawayDepth)
         self.label_fretboardLength_18 = QtGui.QLabel(self.widget1)
@@ -282,7 +282,7 @@ class Ui_Dialog(object):
         self.cutawayRad.setMinimum(0.1)
         self.cutawayRad.setMaximum(1000.0)
         self.cutawayRad.setSingleStep(0.1)
-        self.cutawayRad.setProperty("value(self)", 100.0)
+        self.cutawayRad.setProperty("value", 100.0)
         self.cutawayRad.setObjectName("cutawayRad")
         self.verticalLayout_5.addWidget(self.cutawayRad)
         self.tabWidget.addTab(self.tab_4, "")
@@ -304,7 +304,7 @@ class Ui_Dialog(object):
         self.pickups.setMinimum(0.0)
         self.pickups.setMaximum(1.0)
         self.pickups.setSingleStep(1.0)
-        self.pickups.setProperty("value(self)", 1.0)
+        self.pickups.setProperty("value", 1.0)
         self.pickups.setObjectName("pickups")
         self.verticalLayout_6.addWidget(self.pickups)
         self.label_fretboardLength_20 = QtGui.QLabel(self.widget2)
@@ -317,7 +317,7 @@ class Ui_Dialog(object):
         self.pickupWidth.setMinimum(0.1)
         self.pickupWidth.setMaximum(1000.0)
         self.pickupWidth.setSingleStep(0.1)
-        self.pickupWidth.setProperty("value(self)", 130.0)
+        self.pickupWidth.setProperty("value", 130.0)
         self.pickupWidth.setObjectName("pickupWidth")
         self.verticalLayout_6.addWidget(self.pickupWidth)
         self.label_fretboardLength_21 = QtGui.QLabel(self.widget2)
@@ -330,7 +330,7 @@ class Ui_Dialog(object):
         self.pickupHeight.setMinimum(0.1)
         self.pickupHeight.setMaximum(1000.0)
         self.pickupHeight.setSingleStep(0.1)
-        self.pickupHeight.setProperty("value(self)", 80.0)
+        self.pickupHeight.setProperty("value", 80.0)
         self.pickupHeight.setObjectName("pickupHeight")
         self.verticalLayout_6.addWidget(self.pickupHeight)
         self.label_fretboardLength_22 = QtGui.QLabel(self.widget2)
@@ -343,7 +343,7 @@ class Ui_Dialog(object):
         self.pickupDepth.setMinimum(0.1)
         self.pickupDepth.setMaximum(1000.0)
         self.pickupDepth.setSingleStep(0.1)
-        self.pickupDepth.setProperty("value(self)", 40.0)
+        self.pickupDepth.setProperty("value", 40.0)
         self.pickupDepth.setObjectName("pickupDepth")
         self.verticalLayout_6.addWidget(self.pickupDepth)
         self.label_fretboardLength_23 = QtGui.QLabel(self.widget2)
@@ -356,7 +356,7 @@ class Ui_Dialog(object):
         self.pickupNeckPosX.setMinimum(0.1)
         self.pickupNeckPosX.setMaximum(1000.0)
         self.pickupNeckPosX.setSingleStep(0.1)
-        self.pickupNeckPosX.setProperty("value(self)", 240.0)
+        self.pickupNeckPosX.setProperty("value", 240.0)
         self.pickupNeckPosX.setObjectName("pickupNeckPosX")
         self.verticalLayout_6.addWidget(self.pickupNeckPosX)
         self.label_fretboardLength_24 = QtGui.QLabel(self.widget2)
@@ -369,7 +369,7 @@ class Ui_Dialog(object):
         self.pickupBodyPosX.setMinimum(0.1)
         self.pickupBodyPosX.setMaximum(1000.0)
         self.pickupBodyPosX.setSingleStep(0.1)
-        self.pickupBodyPosX.setProperty("value(self)", 500.0)
+        self.pickupBodyPosX.setProperty("value", 500.0)
         self.pickupBodyPosX.setObjectName("pickupBodyPosX")
         self.verticalLayout_6.addWidget(self.pickupBodyPosX)
         self.tabWidget.addTab(self.tab_5, "")
@@ -449,25 +449,25 @@ class Ui_Dialog(object):
     def onSubmit(self):
         #try:
             # Variables fretboard
-            fretboardLength         = self.fretboardLength.value(self)(self) # Length between body and end of fretboard - x
-            fretboardWidthWide      = self.fretboardWidthWide.value(self) # Width of fretboard at side of body - x
-            fretboardWidthNarrow    = self.fretboardWidthNarrow.value(self) # Width of fretboard at top side - x
-            fretboardHeight         = self.fretboardHeight.value(self) # Heigth of fretboard - x
-            fretboardRoundingRadius = self.fretboardRoundingRadius.value(self) # Radius for rounding at bottom off fretboard - x
+            fretboardLength         = self.fretboardLength.value() # Length between body and end of fretboard - x
+            fretboardWidthWide      = self.fretboardWidthWide.value() # Width of fretboard at side of body - x
+            fretboardWidthNarrow    = self.fretboardWidthNarrow.value() # Width of fretboard at top side - x
+            fretboardHeight         = self.fretboardHeight.value() # Heigth of fretboard - x
+            fretboardRoundingRadius = self.fretboardRoundingRadius.value() # Radius for rounding at bottom off fretboard - x
 
             # Variables head
             headPreset              = 1 # Right now, only option 1 is defined - o
-            headLength              = self.headLength.value(self) # Length of head - x
-            headWidth               = self.headWidth.value(self) # Width of head - x
-            headHeight              = self.headHeight.value(self) # Height of hbead - x
-            headMarchLength         = self.headMarchLength.value(self) / 100 * headLength # Space between fretboard and narrowing - x
+            headLength              = self.headLength.value() # Length of head - x
+            headWidth               = self.headWidth.value() # Width of head - x
+            headHeight              = self.headHeight.value() # Height of hbead - x
+            headMarchLength         = self.headMarchLength.value() / 100 * headLength # Space between fretboard and narrowing - x
 
             # Variables body
-            bodyLength              = self.bodyLength.value(self) #Total length of the body - x
-            bodyWidth               = self.bodyWidth.value(self) #Space between the start of the circles and the center of the body - x
-            bodyThickness           = self.bodThickness.value(self) #Thickness of the total body - x
+            bodyLength              = self.bodyLength.value() #Total length of the body - x
+            bodyWidth               = self.bodyWidth.value() #Space between the start of the circles and the center of the body - x
+            bodyThickness           = self.bodThickness.value() #Thickness of the total body - x
             lowerBoutArcRatio       = 0.730875 # - o
-            arcRatio                = self.arcRatio.value(self) #Sets ratio between upper and lower arc (1:arcRatio) User input - x
+            arcRatio                = self.arcRatio.value() #Sets ratio between upper and lower arc (1:arcRatio) User input - x
             bodyOffset              = 0.0 #Space between top/bottem of the body and the arcs # - o
             bodyLowerBoutArcRad     = (bodyLength - lowerBoutArcRatio * bodyLength) / 1.089 #Radius of the lower circle - o
             bodyLowerBoutArcPosY    = bodyLowerBoutArcRad + bodyOffset #Position Y of the lower circle - o
@@ -483,22 +483,22 @@ class Ui_Dialog(object):
 
             # Cutaway
             # Type (0=nothing, 1=venetian
-            cutawayType             = int(self.cutawayType.value(self)) # - x
-            cutawayOffset           = self.cutawayOffset.value(self) #Position from neck - x
-            cutawayDepth            = self.cutawayDepth.value(self) #Position in body - x
-            cutawayRad              = self.cutawayRad.value(self) #Radius - x
+            cutawayType             = int(self.cutawayType.value()) # - x
+            cutawayOffset           = self.cutawayOffset.value() #Position from neck - x
+            cutawayDepth            = self.cutawayDepth.value() #Position in body - x
+            cutawayRad              = self.cutawayRad.value() #Radius - x
 
             # Pickups
-            if (int(self.pickups.value(self)) == 1):
+            if (int(self.pickups.value()) == 1):
                 pickups             = True # - x
             else:
                 pickups             = False # - x
             
-            pickupWidth             = self.pickupWidth.value(self) # - x
-            pickupHeight            = self.pickupHeight.value(self) # - x
-            pickupDepth             = self.pickupDepth.value(self) # - x
-            pickupNeckPosX          = self.pickupNeckPosX.value(self) #Position from top of the body - x
-            pickupBodyPosX          = self.pickupBodyPosX.value(self) #Position from top of the body - x
+            pickupWidth             = self.pickupWidth.value() # - x
+            pickupHeight            = self.pickupHeight.value() # - x
+            pickupDepth             = self.pickupDepth.value() # - x
+            pickupNeckPosX          = self.pickupNeckPosX.value() #Position from top of the body - x
+            pickupBodyPosX          = self.pickupBodyPosX.value() #Position from top of the body - x
         #except:
         #    print "Error! Values must be valid numbers!"
         #else:
