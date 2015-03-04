@@ -631,8 +631,8 @@ class Ui_Dialog(object):
             FreeCAD.activeDocument().bodyMirrored.Originals = [FreeCAD.activeDocument().Pad,]
             FreeCAD.activeDocument().bodyMirrored.MirrorPlane = (FreeCAD.activeDocument().Body, ["V_Axis"])
             FreeCADGui.activeDocument().Pad.Visibility=False
-            FreeCADGui.ActiveDocument.bodyMirrored.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
-            FreeCADGui.ActiveDocument.bodyMirrored.DisplayMode=Gui.ActiveDocument.Pad.DisplayMode
+            FreeCADGui.ActiveDocument.bodyMirrored.ShapeColor=FreeCADGui.ActiveDocument.Pad.ShapeColor
+            FreeCADGui.ActiveDocument.bodyMirrored.DisplayMode=FreeCADGui.ActiveDocument.Pad.DisplayMode
             FreeCAD.ActiveDocument.bodyMirrored.Originals = [FreeCAD.ActiveDocument.Pad,]
             FreeCAD.ActiveDocument.bodyMirrored.MirrorPlane = (FreeCAD.ActiveDocument.Body,["V_Axis"])
 
@@ -652,8 +652,8 @@ class Ui_Dialog(object):
                 FreeCAD.activeDocument().addObject("Part::Cut","Cut")
                 FreeCAD.activeDocument().Cut.Base = FreeCAD.activeDocument().bodyMirrored
                 FreeCAD.activeDocument().Cut.Tool = FreeCAD.activeDocument().Cylinder
-                FreeCADGui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.bodyMirrored.ShapeColor
-                FreeCADGui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.bodyMirrored.DisplayMode
+                FreeCADGui.ActiveDocument.Cut.ShapeColor=FreeCADGui.ActiveDocument.bodyMirrored.ShapeColor
+                FreeCADGui.ActiveDocument.Cut.DisplayMode=FreeCADGui.ActiveDocument.bodyMirrored.DisplayMode
 
 
             # Cut out space for pickups if chosen    
