@@ -51,10 +51,10 @@ class TGD ( Workbench ):
 		self.appendMenu("My Tools", ["3D_Test3D"])
 		Log ("Loading MyModule... done\n")
 
-	def Activated(self):
-		Msg ("TGD.Activated()\n")
+	#def Activated(self):
+	#	Msg ("TGD.Activated()\n")
 
-	def Deactivated(self):
-		Msg ("TGD.Deactivated()\n")
+	#def Deactivated(self):
+	#	Msg ("TGD.Deactivated()\n")
 	
 FreeCADGui.addWorkbench(TGD)

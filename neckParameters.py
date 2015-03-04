@@ -9,7 +9,14 @@ from PySide import QtCore, QtGui
 import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
+    def __init__(self):
+        self.didRun = false;
+
     def setupUi(self, Dialog):
+        if (self.didRun):
+            print ("Did run!")
+        else:
+            print ("Didn't run!")
         Dialog.setObjectName("3D Guitar Designer")
         Dialog.resize(527, 420)
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
