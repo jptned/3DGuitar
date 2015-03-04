@@ -622,7 +622,7 @@ class Ui_Dialog(object):
             FreeCAD.activeDocument().Pad.Sketch = FreeCAD.activeDocument().Body
             FreeCAD.activeDocument().Pad.Length = bodyThickness
             FreeCAD.ActiveDocument.recompute()
-            Gui.activeDocument().hide("Body")
+            FreeCADGui.activeDocument().hide("Body")
 
 
             # Mirror
@@ -630,9 +630,9 @@ class Ui_Dialog(object):
             FreeCAD.ActiveDocument.recompute()
             FreeCAD.activeDocument().bodyMirrored.Originals = [FreeCAD.activeDocument().Pad,]
             FreeCAD.activeDocument().bodyMirrored.MirrorPlane = (FreeCAD.activeDocument().Body, ["V_Axis"])
-            Gui.activeDocument().Pad.Visibility=False
-            Gui.ActiveDocument.bodyMirrored.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
-            Gui.ActiveDocument.bodyMirrored.DisplayMode=Gui.ActiveDocument.Pad.DisplayMode
+            FreeCADGui.activeDocument().Pad.Visibility=False
+            FreeCADGui.ActiveDocument.bodyMirrored.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
+            FreeCADGui.ActiveDocument.bodyMirrored.DisplayMode=Gui.ActiveDocument.Pad.DisplayMode
             FreeCAD.ActiveDocument.bodyMirrored.Originals = [FreeCAD.ActiveDocument.Pad,]
             FreeCAD.ActiveDocument.bodyMirrored.MirrorPlane = (FreeCAD.ActiveDocument.Body,["V_Axis"])
 
@@ -648,12 +648,12 @@ class Ui_Dialog(object):
                 FreeCAD.ActiveDocument.getObject("Cylinder").Height = bodyLength * 10
                 
                 #Cut
-                Gui.activateWorkbench("PartWorkbench")
+                FreeCADGui.activateWorkbench("PartWorkbench")
                 FreeCAD.activeDocument().addObject("Part::Cut","Cut")
                 FreeCAD.activeDocument().Cut.Base = FreeCAD.activeDocument().bodyMirrored
                 FreeCAD.activeDocument().Cut.Tool = FreeCAD.activeDocument().Cylinder
-                Gui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.bodyMirrored.ShapeColor
-                Gui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.bodyMirrored.DisplayMode
+                FreeCADGui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.bodyMirrored.ShapeColor
+                FreeCADGui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.bodyMirrored.DisplayMode
 
 
             # Cut out space for pickups if chosen    
@@ -676,20 +676,20 @@ class Ui_Dialog(object):
                 FreeCAD.activeDocument().addObject("Part::Cut","Cut001")
                 FreeCAD.activeDocument().Cut001.Base = FreeCAD.activeDocument().Cut
                 FreeCAD.activeDocument().Cut001.Tool = FreeCAD.activeDocument().neckPickup
-                Gui.activeDocument().hide('Cut')
-                Gui.activeDocument().hide('neckPickup')
+                FreeCADGui.activeDocument().hide('Cut')
+                FreeCADGui.activeDocument().hide('neckPickup')
                 
                 FreeCAD.activeDocument().addObject("Part::Cut","guitarBody")
                 FreeCAD.activeDocument().guitarBody.Base = FreeCAD.activeDocument().Cut001
                 FreeCAD.activeDocument().guitarBody.Tool = FreeCAD.activeDocument().bodyPickup
-                Gui.activeDocument().hide('Cut001')
-                Gui.activeDocument().hide('bodyPickup')
+                FreeCADGui.activeDocument().hide('Cut001')
+                FreeCADGui.activeDocument().hide('bodyPickup')
 
 
             # Render
             doc.recompute()
-            Gui.activeDocument().activeView().viewAxometric()
-            Gui.SendMsgToActiveView("ViewFit")
+            FreeCADGui.activeDocument().activeView().viewAxometric()
+            FreeCADGui.SendMsgToActiveView("ViewFit")
 
 class guitarInput():
     def __init__(self):
