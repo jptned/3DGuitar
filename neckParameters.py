@@ -6,171 +6,519 @@
 #      WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
-import Draft, math, FreeCAD, FreeCADGui
+import Draft, math, Part, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(526, 420)
-        self.create = QtGui.QPushButton(Dialog)
-        self.create.setGeometry(QtCore.QRect(430, 380, 75, 23))
-        self.create.setObjectName("create")
-        self.tabWidget = QtGui.QTabWidget(Dialog)
-        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 176, 264))
+        Dialog.setObjectName("3D Guitar Designer")
+        Dialog.resize(527, 420)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.tabWidget = QtWidgets.QTabWidget(Dialog)
         self.tabWidget.setObjectName("tabWidget")
-        self.tab = QtGui.QWidget()
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.widget = QtWidgets.QWidget(self.tab_2)
+        self.widget.setGeometry(QtCore.QRect(20, 20, 461, 221))
+        self.widget.setObjectName("widget")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label_fretboardLength_13 = QtWidgets.QLabel(self.widget)
+        self.label_fretboardLength_13.setObjectName("label_fretboardLength_13")
+        self.verticalLayout_2.addWidget(self.label_fretboardLength_13)
+        self.bodyLength = QtWidgets.QDoubleSpinBox(self.widget)
+        self.bodyLength.setPrefix("")
+        self.bodyLength.setSuffix("")
+        self.bodyLength.setDecimals(1)
+        self.bodyLength.setMinimum(0.1)
+        self.bodyLength.setMaximum(10000.0)
+        self.bodyLength.setSingleStep(0.1)
+        self.bodyLength.setProperty("value", 800.0)
+        self.bodyLength.setObjectName("bodyLength")
+        self.verticalLayout_2.addWidget(self.bodyLength)
+        self.label_fretboardLength_11 = QtWidgets.QLabel(self.widget)
+        self.label_fretboardLength_11.setObjectName("label_fretboardLength_11")
+        self.verticalLayout_2.addWidget(self.label_fretboardLength_11)
+        self.bodyWidth = QtWidgets.QDoubleSpinBox(self.widget)
+        self.bodyWidth.setPrefix("")
+        self.bodyWidth.setSuffix("")
+        self.bodyWidth.setDecimals(1)
+        self.bodyWidth.setMinimum(0.1)
+        self.bodyWidth.setMaximum(1000.0)
+        self.bodyWidth.setSingleStep(0.1)
+        self.bodyWidth.setProperty("value", 85.0)
+        self.bodyWidth.setObjectName("bodyWidth")
+        self.verticalLayout_2.addWidget(self.bodyWidth)
+        self.label_fretboardLength_10 = QtWidgets.QLabel(self.widget)
+        self.label_fretboardLength_10.setObjectName("label_fretboardLength_10")
+        self.verticalLayout_2.addWidget(self.label_fretboardLength_10)
+        self.bodThickness = QtWidgets.QDoubleSpinBox(self.widget)
+        self.bodThickness.setPrefix("")
+        self.bodThickness.setSuffix("")
+        self.bodThickness.setDecimals(1)
+        self.bodThickness.setMinimum(0.1)
+        self.bodThickness.setMaximum(1000.0)
+        self.bodThickness.setSingleStep(0.1)
+        self.bodThickness.setProperty("value", 80.0)
+        self.bodThickness.setObjectName("bodThickness")
+        self.verticalLayout_2.addWidget(self.bodThickness)
+        self.label_fretboardLength_14 = QtWidgets.QLabel(self.widget)
+        self.label_fretboardLength_14.setObjectName("label_fretboardLength_14")
+        self.verticalLayout_2.addWidget(self.label_fretboardLength_14)
+        self.arcRatio = QtWidgets.QDoubleSpinBox(self.widget)
+        self.arcRatio.setPrefix("")
+        self.arcRatio.setSuffix("")
+        self.arcRatio.setDecimals(2)
+        self.arcRatio.setMinimum(0.1)
+        self.arcRatio.setMaximum(1000.0)
+        self.arcRatio.setSingleStep(0.1)
+        self.arcRatio.setProperty("value", 1.26)
+        self.arcRatio.setObjectName("arcRatio")
+        self.verticalLayout_2.addWidget(self.arcRatio)
+        self.label_fretboardLength_12 = QtWidgets.QLabel(self.widget)
+        self.label_fretboardLength_12.setObjectName("label_fretboardLength_12")
+        self.verticalLayout_2.addWidget(self.label_fretboardLength_12)
+        self.bodyConnectAngle = QtWidgets.QDoubleSpinBox(self.widget)
+        self.bodyConnectAngle.setPrefix("")
+        self.bodyConnectAngle.setSuffix("")
+        self.bodyConnectAngle.setDecimals(1)
+        self.bodyConnectAngle.setMinimum(0.0)
+        self.bodyConnectAngle.setMaximum(360.0)
+        self.bodyConnectAngle.setSingleStep(0.1)
+        self.bodyConnectAngle.setProperty("value", 30.0)
+        self.bodyConnectAngle.setObjectName("bodyConnectAngle")
+        self.verticalLayout_2.addWidget(self.bodyConnectAngle)
+        self.tabWidget.addTab(self.tab_2, "")
+        self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
-        self.gridLayout_2 = QtGui.QGridLayout(self.tab)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label_fretboardLength = QtGui.QLabel(self.tab)
+        self.layoutWidget = QtWidgets.QWidget(self.tab)
+        self.layoutWidget.setGeometry(QtCore.QRect(20, 20, 461, 221))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.label_fretboardLength = QtWidgets.QLabel(self.layoutWidget)
         self.label_fretboardLength.setObjectName("label_fretboardLength")
-        self.gridLayout_2.addWidget(self.label_fretboardLength, 0, 0, 1, 1)
-        self.label_fretboardLength_3 = QtGui.QLabel(self.tab)
-        self.label_fretboardLength_3.setObjectName("label_fretboardLength_3")
-        self.gridLayout_2.addWidget(self.label_fretboardLength_3, 5, 0, 1, 1)
-        self.fretboardWidthWide = QtGui.QLineEdit(self.tab)
-        self.fretboardWidthWide.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.fretboardWidthWide.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.fretboardWidthWide.setObjectName("fretboardWidthWide")
-        self.gridLayout_2.addWidget(self.fretboardWidthWide, 6, 0, 1, 1)
-        self.label_fretboardLength_4 = QtGui.QLabel(self.tab)
-        self.label_fretboardLength_4.setObjectName("label_fretboardLength_4")
-        self.gridLayout_2.addWidget(self.label_fretboardLength_4, 7, 0, 1, 1)
-        self.label_fretboardLength_5 = QtGui.QLabel(self.tab)
-        self.label_fretboardLength_5.setObjectName("label_fretboardLength_5")
-        self.gridLayout_2.addWidget(self.label_fretboardLength_5, 9, 0, 1, 1)
-        self.label_fretboardLength_2 = QtGui.QLabel(self.tab)
-        self.label_fretboardLength_2.setObjectName("label_fretboardLength_2")
-        self.gridLayout_2.addWidget(self.label_fretboardLength_2, 3, 0, 1, 1)
-        self.fretboardRoundingRadius = QtGui.QLineEdit(self.tab)
-        self.fretboardRoundingRadius.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.fretboardRoundingRadius.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.fretboardRoundingRadius.setObjectName("fretboardRoundingRadius")
-        self.gridLayout_2.addWidget(self.fretboardRoundingRadius, 10, 0, 1, 1)
-        self.fretboardHeight = QtGui.QLineEdit(self.tab)
-        self.fretboardHeight.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.fretboardHeight.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.fretboardHeight.setObjectName("fretboardHeight")
-        self.gridLayout_2.addWidget(self.fretboardHeight, 8, 0, 1, 1)
-        self.fretboardWidthNarrow = QtGui.QLineEdit(self.tab)
-        self.fretboardWidthNarrow.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.fretboardWidthNarrow.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.fretboardWidthNarrow.setObjectName("fretboardWidthNarrow")
-        self.gridLayout_2.addWidget(self.fretboardWidthNarrow, 4, 0, 1, 1)
-        self.fretboardLength = QtGui.QLineEdit(self.tab)
-        self.fretboardLength.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.fretboardLength.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.fretboardLength.setInputMask("")
+        self.verticalLayout_3.addWidget(self.label_fretboardLength)
+        self.fretboardLength = QtWidgets.QDoubleSpinBox(self.layoutWidget)
+        self.fretboardLength.setPrefix("")
+        self.fretboardLength.setSuffix("")
+        self.fretboardLength.setDecimals(1)
+        self.fretboardLength.setMinimum(0.1)
+        self.fretboardLength.setMaximum(1000.0)
+        self.fretboardLength.setSingleStep(0.1)
+        self.fretboardLength.setProperty("value", 500.0)
         self.fretboardLength.setObjectName("fretboardLength")
-        self.gridLayout_2.addWidget(self.fretboardLength, 1, 0, 1, 1)
+        self.verticalLayout_3.addWidget(self.fretboardLength)
+        self.label_fretboardLength_2 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_fretboardLength_2.setObjectName("label_fretboardLength_2")
+        self.verticalLayout_3.addWidget(self.label_fretboardLength_2)
+        self.fretboardWidthNarrow = QtWidgets.QDoubleSpinBox(self.layoutWidget)
+        self.fretboardWidthNarrow.setPrefix("")
+        self.fretboardWidthNarrow.setSuffix("")
+        self.fretboardWidthNarrow.setDecimals(1)
+        self.fretboardWidthNarrow.setMinimum(0.1)
+        self.fretboardWidthNarrow.setMaximum(1000.0)
+        self.fretboardWidthNarrow.setSingleStep(0.1)
+        self.fretboardWidthNarrow.setProperty("value", 40.0)
+        self.fretboardWidthNarrow.setObjectName("fretboardWidthNarrow")
+        self.verticalLayout_3.addWidget(self.fretboardWidthNarrow)
+        self.label_fretboardLength_3 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_fretboardLength_3.setObjectName("label_fretboardLength_3")
+        self.verticalLayout_3.addWidget(self.label_fretboardLength_3)
+        self.fretboardWidthWide = QtWidgets.QDoubleSpinBox(self.layoutWidget)
+        self.fretboardWidthWide.setPrefix("")
+        self.fretboardWidthWide.setSuffix("")
+        self.fretboardWidthWide.setDecimals(1)
+        self.fretboardWidthWide.setMinimum(0.1)
+        self.fretboardWidthWide.setMaximum(1000.0)
+        self.fretboardWidthWide.setSingleStep(0.1)
+        self.fretboardWidthWide.setProperty("value", 15.0)
+        self.fretboardWidthWide.setObjectName("fretboardWidthWide")
+        self.verticalLayout_3.addWidget(self.fretboardWidthWide)
+        self.label_fretboardLength_4 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_fretboardLength_4.setObjectName("label_fretboardLength_4")
+        self.verticalLayout_3.addWidget(self.label_fretboardLength_4)
+        self.fretboardHeight = QtWidgets.QDoubleSpinBox(self.layoutWidget)
+        self.fretboardHeight.setPrefix("")
+        self.fretboardHeight.setSuffix("")
+        self.fretboardHeight.setDecimals(1)
+        self.fretboardHeight.setMinimum(0.1)
+        self.fretboardHeight.setMaximum(1000.0)
+        self.fretboardHeight.setSingleStep(0.1)
+        self.fretboardHeight.setProperty("value", 15.0)
+        self.fretboardHeight.setObjectName("fretboardHeight")
+        self.verticalLayout_3.addWidget(self.fretboardHeight)
+        self.label_fretboardLength_5 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_fretboardLength_5.setObjectName("label_fretboardLength_5")
+        self.verticalLayout_3.addWidget(self.label_fretboardLength_5)
+        self.fretboardRoundingRadius = QtWidgets.QDoubleSpinBox(self.layoutWidget)
+        self.fretboardRoundingRadius.setPrefix("")
+        self.fretboardRoundingRadius.setSuffix("")
+        self.fretboardRoundingRadius.setDecimals(1)
+        self.fretboardRoundingRadius.setMinimum(0.1)
+        self.fretboardRoundingRadius.setMaximum(1000.0)
+        self.fretboardRoundingRadius.setSingleStep(0.1)
+        self.fretboardRoundingRadius.setProperty("value", 15.0)
+        self.fretboardRoundingRadius.setObjectName("fretboardRoundingRadius")
+        self.verticalLayout_3.addWidget(self.fretboardRoundingRadius)
         self.tabWidget.addTab(self.tab, "")
-        self.tab_3 = QtGui.QWidget()
+        self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
-        self.gridLayout = QtGui.QGridLayout(self.tab_3)
-        self.gridLayout.setObjectName("gridLayout")
-        self.headLength = QtGui.QLineEdit(self.tab_3)
-        self.headLength.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.headLength.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.headLength.setInputMask("")
-        self.headLength.setObjectName("headLength")
-        self.gridLayout.addWidget(self.headLength, 1, 0, 1, 1)
-        self.headWidth = QtGui.QLineEdit(self.tab_3)
-        self.headWidth.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.headWidth.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.headWidth.setObjectName("headWidth")
-        self.gridLayout.addWidget(self.headWidth, 3, 0, 1, 1)
-        self.label_fretboardLength_8 = QtGui.QLabel(self.tab_3)
+        self.layoutWidget1 = QtWidgets.QWidget(self.tab_3)
+        self.layoutWidget1.setGeometry(QtCore.QRect(20, 20, 461, 176))
+        self.layoutWidget1.setObjectName("layoutWidget1")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.layoutWidget1)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.label_fretboardLength_8 = QtWidgets.QLabel(self.layoutWidget1)
         self.label_fretboardLength_8.setObjectName("label_fretboardLength_8")
-        self.gridLayout.addWidget(self.label_fretboardLength_8, 0, 0, 1, 1)
-        self.label_fretboardLength_6 = QtGui.QLabel(self.tab_3)
+        self.verticalLayout_4.addWidget(self.label_fretboardLength_8)
+        self.headLength = QtWidgets.QDoubleSpinBox(self.layoutWidget1)
+        self.headLength.setPrefix("")
+        self.headLength.setSuffix("")
+        self.headLength.setDecimals(1)
+        self.headLength.setMinimum(0.1)
+        self.headLength.setMaximum(1000.0)
+        self.headLength.setSingleStep(0.1)
+        self.headLength.setProperty("value", 150.0)
+        self.headLength.setObjectName("headLength")
+        self.verticalLayout_4.addWidget(self.headLength)
+        self.label_fretboardLength_6 = QtWidgets.QLabel(self.layoutWidget1)
         self.label_fretboardLength_6.setObjectName("label_fretboardLength_6")
-        self.gridLayout.addWidget(self.label_fretboardLength_6, 2, 0, 1, 1)
-        self.headHeight = QtGui.QLineEdit(self.tab_3)
-        self.headHeight.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.headHeight.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.headHeight.setObjectName("headHeight")
-        self.gridLayout.addWidget(self.headHeight, 5, 0, 1, 1)
-        self.label_fretboardLength_7 = QtGui.QLabel(self.tab_3)
-        self.label_fretboardLength_7.setObjectName("label_fretboardLength_7")
-        self.gridLayout.addWidget(self.label_fretboardLength_7, 6, 0, 1, 1)
-        self.label_fretboardLength_9 = QtGui.QLabel(self.tab_3)
+        self.verticalLayout_4.addWidget(self.label_fretboardLength_6)
+        self.headWidth = QtWidgets.QDoubleSpinBox(self.layoutWidget1)
+        self.headWidth.setPrefix("")
+        self.headWidth.setSuffix("")
+        self.headWidth.setDecimals(1)
+        self.headWidth.setMinimum(0.1)
+        self.headWidth.setMaximum(1000.0)
+        self.headWidth.setSingleStep(0.1)
+        self.headWidth.setProperty("value", 80.0)
+        self.headWidth.setObjectName("headWidth")
+        self.verticalLayout_4.addWidget(self.headWidth)
+        self.label_fretboardLength_9 = QtWidgets.QLabel(self.layoutWidget1)
         self.label_fretboardLength_9.setObjectName("label_fretboardLength_9")
-        self.gridLayout.addWidget(self.label_fretboardLength_9, 4, 0, 1, 1)
-        self.headMarchLength = QtGui.QLineEdit(self.tab_3)
-        self.headMarchLength.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        #self.headMarchLength.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.verticalLayout_4.addWidget(self.label_fretboardLength_9)
+        self.headHeight = QtWidgets.QDoubleSpinBox(self.layoutWidget1)
+        self.headHeight.setPrefix("")
+        self.headHeight.setSuffix("")
+        self.headHeight.setDecimals(1)
+        self.headHeight.setMinimum(0.1)
+        self.headHeight.setMaximum(1000.0)
+        self.headHeight.setSingleStep(0.1)
+        self.headHeight.setProperty("value", 15.0)
+        self.headHeight.setObjectName("headHeight")
+        self.verticalLayout_4.addWidget(self.headHeight)
+        self.label_fretboardLength_7 = QtWidgets.QLabel(self.layoutWidget1)
+        self.label_fretboardLength_7.setObjectName("label_fretboardLength_7")
+        self.verticalLayout_4.addWidget(self.label_fretboardLength_7)
+        self.headMarchLength = QtWidgets.QDoubleSpinBox(self.layoutWidget1)
+        self.headMarchLength.setPrefix("")
+        self.headMarchLength.setSuffix("")
+        self.headMarchLength.setDecimals(1)
+        self.headMarchLength.setMinimum(0.0)
+        self.headMarchLength.setMaximum(100.0)
+        self.headMarchLength.setSingleStep(0.1)
+        self.headMarchLength.setProperty("value", 15.0)
         self.headMarchLength.setObjectName("headMarchLength")
-        self.gridLayout.addWidget(self.headMarchLength, 7, 0, 1, 1)
+        self.verticalLayout_4.addWidget(self.headMarchLength)
         self.tabWidget.addTab(self.tab_3, "")
+        self.tab_4 = QtWidgets.QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.widget1 = QtWidgets.QWidget(self.tab_4)
+        self.widget1.setGeometry(QtCore.QRect(20, 20, 461, 176))
+        self.widget1.setObjectName("widget1")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget1)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label_fretboardLength_15 = QtWidgets.QLabel(self.widget1)
+        self.label_fretboardLength_15.setObjectName("label_fretboardLength_15")
+        self.verticalLayout_5.addWidget(self.label_fretboardLength_15)
+        self.cutawayType = QtWidgets.QDoubleSpinBox(self.widget1)
+        self.cutawayType.setPrefix("")
+        self.cutawayType.setSuffix("")
+        self.cutawayType.setDecimals(0)
+        self.cutawayType.setMinimum(0.0)
+        self.cutawayType.setMaximum(1.0)
+        self.cutawayType.setSingleStep(1.0)
+        self.cutawayType.setProperty("value", 1.0)
+        self.cutawayType.setObjectName("cutawayType")
+        self.verticalLayout_5.addWidget(self.cutawayType)
+        self.label_fretboardLength_16 = QtWidgets.QLabel(self.widget1)
+        self.label_fretboardLength_16.setObjectName("label_fretboardLength_16")
+        self.verticalLayout_5.addWidget(self.label_fretboardLength_16)
+        self.cutawayOffset = QtWidgets.QDoubleSpinBox(self.widget1)
+        self.cutawayOffset.setPrefix("")
+        self.cutawayOffset.setSuffix("")
+        self.cutawayOffset.setDecimals(1)
+        self.cutawayOffset.setMinimum(0.1)
+        self.cutawayOffset.setMaximum(1000.0)
+        self.cutawayOffset.setSingleStep(0.1)
+        self.cutawayOffset.setProperty("value", 10.0)
+        self.cutawayOffset.setObjectName("cutawayOffset")
+        self.verticalLayout_5.addWidget(self.cutawayOffset)
+        self.label_fretboardLength_17 = QtWidgets.QLabel(self.widget1)
+        self.label_fretboardLength_17.setObjectName("label_fretboardLength_17")
+        self.verticalLayout_5.addWidget(self.label_fretboardLength_17)
+        self.cutawayDepth = QtWidgets.QDoubleSpinBox(self.widget1)
+        self.cutawayDepth.setPrefix("")
+        self.cutawayDepth.setSuffix("")
+        self.cutawayDepth.setDecimals(1)
+        self.cutawayDepth.setMinimum(0.1)
+        self.cutawayDepth.setMaximum(1000.0)
+        self.cutawayDepth.setSingleStep(0.1)
+        self.cutawayDepth.setProperty("value", 25.0)
+        self.cutawayDepth.setObjectName("cutawayDepth")
+        self.verticalLayout_5.addWidget(self.cutawayDepth)
+        self.label_fretboardLength_18 = QtWidgets.QLabel(self.widget1)
+        self.label_fretboardLength_18.setObjectName("label_fretboardLength_18")
+        self.verticalLayout_5.addWidget(self.label_fretboardLength_18)
+        self.cutawayRad = QtWidgets.QDoubleSpinBox(self.widget1)
+        self.cutawayRad.setPrefix("")
+        self.cutawayRad.setSuffix("")
+        self.cutawayRad.setDecimals(1)
+        self.cutawayRad.setMinimum(0.1)
+        self.cutawayRad.setMaximum(1000.0)
+        self.cutawayRad.setSingleStep(0.1)
+        self.cutawayRad.setProperty("value", 100.0)
+        self.cutawayRad.setObjectName("cutawayRad")
+        self.verticalLayout_5.addWidget(self.cutawayRad)
+        self.tabWidget.addTab(self.tab_4, "")
+        self.tab_5 = QtWidgets.QWidget()
+        self.tab_5.setObjectName("tab_5")
+        self.widget2 = QtWidgets.QWidget(self.tab_5)
+        self.widget2.setGeometry(QtCore.QRect(20, 20, 461, 266))
+        self.widget2.setObjectName("widget2")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget2)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.label_fretboardLength_19 = QtWidgets.QLabel(self.widget2)
+        self.label_fretboardLength_19.setObjectName("label_fretboardLength_19")
+        self.verticalLayout_6.addWidget(self.label_fretboardLength_19)
+        self.pickups = QtWidgets.QDoubleSpinBox(self.widget2)
+        self.pickups.setPrefix("")
+        self.pickups.setSuffix("")
+        self.pickups.setDecimals(0)
+        self.pickups.setMinimum(0.0)
+        self.pickups.setMaximum(1.0)
+        self.pickups.setSingleStep(1.0)
+        self.pickups.setProperty("value", 1.0)
+        self.pickups.setObjectName("pickups")
+        self.verticalLayout_6.addWidget(self.pickups)
+        self.label_fretboardLength_20 = QtWidgets.QLabel(self.widget2)
+        self.label_fretboardLength_20.setObjectName("label_fretboardLength_20")
+        self.verticalLayout_6.addWidget(self.label_fretboardLength_20)
+        self.pickupWidth = QtWidgets.QDoubleSpinBox(self.widget2)
+        self.pickupWidth.setPrefix("")
+        self.pickupWidth.setSuffix("")
+        self.pickupWidth.setDecimals(1)
+        self.pickupWidth.setMinimum(0.1)
+        self.pickupWidth.setMaximum(1000.0)
+        self.pickupWidth.setSingleStep(0.1)
+        self.pickupWidth.setProperty("value", 130.0)
+        self.pickupWidth.setObjectName("pickupWidth")
+        self.verticalLayout_6.addWidget(self.pickupWidth)
+        self.label_fretboardLength_21 = QtWidgets.QLabel(self.widget2)
+        self.label_fretboardLength_21.setObjectName("label_fretboardLength_21")
+        self.verticalLayout_6.addWidget(self.label_fretboardLength_21)
+        self.pickupHeight = QtWidgets.QDoubleSpinBox(self.widget2)
+        self.pickupHeight.setPrefix("")
+        self.pickupHeight.setSuffix("")
+        self.pickupHeight.setDecimals(1)
+        self.pickupHeight.setMinimum(0.1)
+        self.pickupHeight.setMaximum(1000.0)
+        self.pickupHeight.setSingleStep(0.1)
+        self.pickupHeight.setProperty("value", 80.0)
+        self.pickupHeight.setObjectName("pickupHeight")
+        self.verticalLayout_6.addWidget(self.pickupHeight)
+        self.label_fretboardLength_22 = QtWidgets.QLabel(self.widget2)
+        self.label_fretboardLength_22.setObjectName("label_fretboardLength_22")
+        self.verticalLayout_6.addWidget(self.label_fretboardLength_22)
+        self.pickupDepth = QtWidgets.QDoubleSpinBox(self.widget2)
+        self.pickupDepth.setPrefix("")
+        self.pickupDepth.setSuffix("")
+        self.pickupDepth.setDecimals(1)
+        self.pickupDepth.setMinimum(0.1)
+        self.pickupDepth.setMaximum(1000.0)
+        self.pickupDepth.setSingleStep(0.1)
+        self.pickupDepth.setProperty("value", 40.0)
+        self.pickupDepth.setObjectName("pickupDepth")
+        self.verticalLayout_6.addWidget(self.pickupDepth)
+        self.label_fretboardLength_23 = QtWidgets.QLabel(self.widget2)
+        self.label_fretboardLength_23.setObjectName("label_fretboardLength_23")
+        self.verticalLayout_6.addWidget(self.label_fretboardLength_23)
+        self.pickupNeckPosX = QtWidgets.QDoubleSpinBox(self.widget2)
+        self.pickupNeckPosX.setPrefix("")
+        self.pickupNeckPosX.setSuffix("")
+        self.pickupNeckPosX.setDecimals(1)
+        self.pickupNeckPosX.setMinimum(0.1)
+        self.pickupNeckPosX.setMaximum(1000.0)
+        self.pickupNeckPosX.setSingleStep(0.1)
+        self.pickupNeckPosX.setProperty("value", 240.0)
+        self.pickupNeckPosX.setObjectName("pickupNeckPosX")
+        self.verticalLayout_6.addWidget(self.pickupNeckPosX)
+        self.label_fretboardLength_24 = QtWidgets.QLabel(self.widget2)
+        self.label_fretboardLength_24.setObjectName("label_fretboardLength_24")
+        self.verticalLayout_6.addWidget(self.label_fretboardLength_24)
+        self.pickupBodyPosX = QtWidgets.QDoubleSpinBox(self.widget2)
+        self.pickupBodyPosX.setPrefix("")
+        self.pickupBodyPosX.setSuffix("")
+        self.pickupBodyPosX.setDecimals(1)
+        self.pickupBodyPosX.setMinimum(0.1)
+        self.pickupBodyPosX.setMaximum(1000.0)
+        self.pickupBodyPosX.setSingleStep(0.1)
+        self.pickupBodyPosX.setProperty("value", 500.0)
+        self.pickupBodyPosX.setObjectName("pickupBodyPosX")
+        self.verticalLayout_6.addWidget(self.pickupBodyPosX)
+        self.tabWidget.addTab(self.tab_5, "")
+        self.verticalLayout.addWidget(self.tabWidget)
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.create = QtWidgets.QPushButton(Dialog)
+        self.create.setObjectName("create")
+        self.verticalLayout.addWidget(self.create)
 
         self.retranslateUi(Dialog)
         self.tabWidget.setCurrentIndex(0)
+
         QtCore.QObject.connect(self.create,QtCore.SIGNAL("pressed()"),self.onSubmit)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.create.setText(_translate("Dialog", "Generate"))
-        self.label_fretboardLength.setText(_translate("Dialog", "Fretboard length"))
-        self.label_fretboardLength_3.setText(_translate("Dialog", "Fretboard width wide side"))
-        self.fretboardWidthWide.setText(_translate("Dialog", "15.0"))
-        self.label_fretboardLength_4.setText(_translate("Dialog", "Fretboard heigth"))
-        self.label_fretboardLength_5.setText(_translate("Dialog", "Rounding radius fretboard"))
-        self.label_fretboardLength_2.setText(_translate("Dialog", "Fretboard width narrow side"))
-        self.fretboardRoundingRadius.setText(_translate("Dialog", "15.0"))
-        self.fretboardHeight.setText(_translate("Dialog", "15.0"))
-        self.fretboardWidthNarrow.setText(_translate("Dialog", "40.0"))
-        self.fretboardLength.setText(_translate("Dialog", "500.0"))
+        self.label_fretboardLength_13.setText(_translate("Dialog", "Length"))
+        self.bodyLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Total length of the body</p></body></html>"))
+        self.label_fretboardLength_11.setText(_translate("Dialog", "Width"))
+        self.bodyWidth.setToolTip(_translate("Dialog", "<html><head/><body><p>Space between the start of the circles and the center of the body</p></body></html>"))
+        self.label_fretboardLength_10.setText(_translate("Dialog", "Thickness"))
+        self.bodThickness.setToolTip(_translate("Dialog", "<html><head/><body><p>Thickness of the total body</p></body></html>"))
+        self.label_fretboardLength_14.setText(_translate("Dialog", "Arc ratio"))
+        self.arcRatio.setToolTip(_translate("Dialog", "<html><head/><body><p>Sets ratio between upper and lower arc (1:arcRatio)</p></body></html>"))
+        self.label_fretboardLength_12.setText(_translate("Dialog", "Connect angle (degrees)"))
+        self.bodyConnectAngle.setToolTip(_translate("Dialog", "<html><head/><body><p>The length of the middle circle part in degrees</p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Body"))
+        self.label_fretboardLength.setText(_translate("Dialog", "Length"))
+        self.fretboardLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Length between body and end of fretboard</p></body></html>"))
+        self.label_fretboardLength_2.setText(_translate("Dialog", "Width narrow side"))
+        self.fretboardWidthNarrow.setToolTip(_translate("Dialog", "<html><head/><body><p>Width of fretboard at side of body</p></body></html>"))
+        self.label_fretboardLength_3.setText(_translate("Dialog", "Width wide side"))
+        self.fretboardWidthWide.setToolTip(_translate("Dialog", "<html><head/><body><p>Width of fretboard at top side</p></body></html>"))
+        self.label_fretboardLength_4.setText(_translate("Dialog", "Heigth"))
+        self.fretboardHeight.setToolTip(_translate("Dialog", "<html><head/><body><p>Heigth of fretboard</p></body></html>"))
+        self.label_fretboardLength_5.setText(_translate("Dialog", "Rounding radius bottom"))
+        self.fretboardRoundingRadius.setToolTip(_translate("Dialog", "<html><head/><body><p>Radius for rounding at bottom off fretboard</p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Fretboard"))
-        self.headLength.setText(_translate("Dialog", "150"))
-        self.headWidth.setText(_translate("Dialog", "80.0"))
-        self.label_fretboardLength_8.setText(_translate("Dialog", "Head length"))
-        self.label_fretboardLength_6.setText(_translate("Dialog", "Head width"))
-        self.headHeight.setText(_translate("Dialog", "15.0"))
-        self.label_fretboardLength_7.setText(_translate("Dialog", "Space until narrowing head (%)"))
-        self.label_fretboardLength_9.setText(_translate("Dialog", "Head height"))
-        self.headMarchLength.setText(_translate("Dialog", "15"))
+        self.label_fretboardLength_8.setText(_translate("Dialog", "Length"))
+        self.headLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Length of head</p></body></html>"))
+        self.label_fretboardLength_6.setText(_translate("Dialog", "Width"))
+        self.headWidth.setToolTip(_translate("Dialog", "<html><head/><body><p>Width of head</p></body></html>"))
+        self.label_fretboardLength_9.setText(_translate("Dialog", "Height"))
+        self.headHeight.setToolTip(_translate("Dialog", "<html><head/><body><p>Height of head</p></body></html>"))
+        self.label_fretboardLength_7.setText(_translate("Dialog", "Space until narrowing (%)"))
+        self.headMarchLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Space between fretboard and narrowing of head (percentage of head length)</p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Dialog", "Head"))
+        self.label_fretboardLength_15.setText(_translate("Dialog", "Type"))
+        self.cutawayType.setToolTip(_translate("Dialog", "<html><head/><body><p>0 - Nothing<br/>1 - Venetian</p></body></html>"))
+        self.label_fretboardLength_16.setText(_translate("Dialog", "Offset"))
+        self.cutawayOffset.setToolTip(_translate("Dialog", "<html><head/><body><p>Position from neck</p></body></html>"))
+        self.label_fretboardLength_17.setText(_translate("Dialog", "Depth"))
+        self.cutawayDepth.setToolTip(_translate("Dialog", "<html><head/><body><p>Position in body</p></body></html>"))
+        self.label_fretboardLength_18.setText(_translate("Dialog", "Radius"))
+        self.cutawayRad.setToolTip(_translate("Dialog", "<html><head/><body><p>Radius of cutaway</p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Dialog", "Cutaway"))
+        self.label_fretboardLength_19.setText(_translate("Dialog", "Pickups"))
+        self.pickups.setToolTip(_translate("Dialog", "<html><head/><body><p>Enable Pickups:</p><p>0 - No<br/>1 - Yes</p></body></html>"))
+        self.label_fretboardLength_20.setText(_translate("Dialog", "Width"))
+        self.pickupWidth.setToolTip(_translate("Dialog", "<html><head/><body><p>Width of pickup</p></body></html>"))
+        self.label_fretboardLength_21.setText(_translate("Dialog", "Height"))
+        self.pickupHeight.setToolTip(_translate("Dialog", "<html><head/><body><p>Height of pickup</p></body></html>"))
+        self.label_fretboardLength_22.setText(_translate("Dialog", "Depth"))
+        self.pickupDepth.setToolTip(_translate("Dialog", "<html><head/><body><p>Depth of pickup</p></body></html>"))
+        self.label_fretboardLength_23.setText(_translate("Dialog", "Position neck pickup"))
+        self.pickupNeckPosX.setToolTip(_translate("Dialog", "<html><head/><body><p>Position from top of the body</p></body></html>"))
+        self.label_fretboardLength_24.setText(_translate("Dialog", "Position body pickup"))
+        self.pickupBodyPosX.setToolTip(_translate("Dialog", "<html><head/><body><p>Position from top of body</p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("Dialog", "Pickups"))
+        self.label.setText(_translate("Dialog", "Hover over an input field to get a short description"))
+        self.create.setText(_translate("Dialog", "Generate"))
 
     def onSubmit(self):
         try:
-            fretboardLength = float(self.fretboardLength.text());
-
             # Variables fretboard
-            fretboardLength = float(self.fretboardLength.text()) # Length between body and end of fretboard
-            fretboardWidthWide = float(self.fretboardWidthWide.text()) # Width of fretboard at side of body
-            fretboardWidthNarrow = float(self.fretboardWidthNarrow.text()) # Width of fretboard at top side
-            fretboardHeight = float(self.fretboardHeight.text()) # Heigth of fretboard
-            fretboardRoundingRadius = float(self.fretboardRoundingRadius.text()) # Radius for rounding at bottom of fretboard
+            fretboardLength         = float(self.fretboardLength.value) # Length between body and end of fretboard - x
+            fretboardWidthWide      = float(self.fretboardWidthWide.value) # Width of fretboard at side of body - x
+            fretboardWidthNarrow    = float(self.fretboardWidthNarrow.value) # Width of fretboard at top side - x
+            fretboardHeight         = float(self.fretboardHeight.value) # Heigth of fretboard - x
+            fretboardRoundingRadius = float(self.fretboardRoundingRadius.value) # Radius for rounding at bottom off fretboard - x
 
             # Variables head
-            headPreset = 1 # Right now, only option 1 is defined
-            headLength = float(self.headLength.text()) # Length of head
-            headWidth = float(self.headWidth.text()) # Width of head
-            headHeight = float(self.headHeight.text()) # Height of hbead
-            headMarchLength = float(self.headMarchLength.text()) / 100 * headLength # Space between fretboard and narrowing
+            headPreset              = 1 # Right now, only option 1 is defined - o
+            headLength              = float(self.headLength.value) # Length of head - x
+            headWidth               = float(self.headWidth.value) # Width of head - x
+            headHeight              = float(self.headHeight.value) # Height of hbead - x
+            headMarchLength         = float(self.headMarchLength.value) / 100 * headLength # Space between fretboard and narrowing - x
 
-            if fretboardLength <= 0 or \
-               fretboardWidthWide <= 0 or \
-               fretboardWidthNarrow <= 0 or \
-               fretboardHeight <= 0 or \
-               fretboardRoundingRadius <= 0 or \
-               headLength <= 0 or \
-               headWidth <= 0 or \
-               headHeight <= 0 or \
-               headMarchLength <= 0:
-                raise Exception('Values are not allowed.')
+            # Variables body
+            bodyLength              = float(self.bodyLength.value) #Total length of the body - x
+            bodyWidth               = float(self.bodyWidth.value) #Space between the start of the circles and the center of the body - x
+            bodyThickness           = float(self.bodThickness.value) #Thickness of the total body - x
+            lowerBoutArcRatio       = 0.730875 # - o
+            arcRatio                = float(self.arcRatio.value) #Sets ratio between upper and lower arc (1:arcRatio) User input - x
+            bodyOffset              = 0.0 #Space between top/bottem of the body and the arcs # - o
+            bodyLowerBoutArcRad     = (bodyLength - lowerBoutArcRatio * bodyLength) / 1.089 #Radius of the lower circle - o
+            bodyLowerBoutArcPosY    = bodyLowerBoutArcRad + bodyOffset #Position Y of the lower circle - o
+            bodyUpperBoutArcRad     = bodyLowerBoutArcRad / arcRatio #Size of the upper part of the body - o
+            bodyUpperBoutArcPosY    = bodyLength - bodyOffset - bodyUpperBoutArcRad #Position Y of the upper circle - o
+            bodyCutRad              = (bodyUpperBoutArcRad + bodyLowerBoutArcRad) / 4.5 #Size of the cutout between lower and upper bout arc - o
+            bodyCutPosX             = (bodyUpperBoutArcRad + bodyLowerBoutArcRad) / 2 #Position X of the middle circle - o
+            bodyCutPosY             = ((bodyLength - 2 * bodyOffset) / 2) * math.sqrt(arcRatio) - bodyOffset #Position Y of the middle circle - o
+
+            #Cutout angle(degree to radian)
+            bodyConnectAngle        = 30.000000 #The length of the middle circle part
+            bodyConnectAngleRad     = math.radians(bodyConnectAngle)
+
+            # Cutaway
+            # Type (0=nothing, 1=venetian
+            cutawayType             = int(self.cutawayType.value) # - x
+            cutawayOffset           = float(self.cutawayOffset.value) #Position from neck - x
+            cutawayDepth            = float(self.cutawayDepth.value) #Position in body - x
+            cutawayRad              = float(self.cutawayRad.value) #Radius - x
+
+            # Pickups
+            if (int(self.pickups.value) == 1):
+                pickups             = True # - x
+            else:
+                pickups             = False # - x
+            
+            pickupWidth             = float(self.pickupWidth.value) # - x
+            pickupHeight            = float(self.pickupHeight.value) # - x
+            pickupDepth             = float(self.pickupDepth.value) # - x
+            pickupNeckPosX          = float(self.pickupNeckPosX.value) #Position from top of the body - x
+            pickupBodyPosX          = float(self.pickupBodyPosX.value) #Position from top of the body - x
         except:
             print "Error! Values must be valid numbers!"
         else:
-            # This script is responsable for building up the neck.
-
             # Initialize
             doc = FreeCAD.newDocument()
             zero = FreeCAD.Vector(0,0,0)
 
-            # Fretboard
+            # Functions
+            def posOnCircleX( radius, angle, posX): #Calculate the X position on a cirlce
+                move = math.cos(math.radians(angle)) * radius
+                position = posX + move
+                return(position)
+
+            def posOnCircleY( radius, angle, posY): #Calculate the Y position on a cirlce
+                move = math.sin(math.radians(angle)) * radius
+                position = posY - move
+                return(position)
+
+            # Neck
+            #   Fretboard
             fretboardBase = doc.addObject("Part::Box", "fretboardBase")
             fretboardBase.Length = fretboardLength
             fretboardBase.Width = fretboardWidthWide
@@ -188,8 +536,8 @@ class Ui_Dialog(object):
                 fretboardCutoutR.Height = fretboardHeight
                 fretboardCutoutL.Height = fretboardHeight
                 fretboardCutOutAngle = math.degrees(math.atan(((fretboardWidthWide - fretboardWidthNarrow) / 2) / fretboardLength))
-                fretboardCutoutR.Placement = FreeCAD.Placement(FreeCAD.Vector(0, fretboardWidthWide, 0), FreeCAD.Rotation(FreeCAD.Vector(0,0,1), -fretboardCutOutAngle))
-                fretboardCutoutL.Placement = FreeCAD.Placement(FreeCAD.Vector(0, -fretboardWidthWide, 0), FreeCAD.Rotation(FreeCAD.Vector(0,0,1), fretboardCutOutAngle))
+                fretboardCutoutR.Placement = FreeCAD.Placement(FreeCAD.Vector(0, fretboardWidthWide, 0), FreeCAD.Rotation(App.Vector(0,0,1), -fretboardCutOutAngle))
+                fretboardCutoutL.Placement = FreeCAD.Placement(FreeCAD.Vector(0, -fretboardWidthWide, 0), FreeCAD.Rotation(App.Vector(0,0,1), fretboardCutOutAngle))
                 fretboardHalf = doc.addObject("Part::Cut", "fretboardHalf")
                 fretboardHalf.Base = fretboardBase
                 fretboardHalf.Tool = fretboardCutoutR
@@ -208,7 +556,7 @@ class Ui_Dialog(object):
             del __fillets__
             fretboard.ViewObject.Visibility = False
 
-            # Head
+            #   Head
             if (headPreset == 1):
                 headBase = doc.addObject("Part::Box", "headBase")
                 headBase.Length = headLength
@@ -220,7 +568,7 @@ class Ui_Dialog(object):
                 headCutout.Width = headWidth
                 headCutout.Height = headHeight
                 headCutoutAngle = math.degrees(math.atan(headWidth / (headLength - headMarchLength)))
-                headCutout.Placement = FreeCAD.Placement(FreeCAD.Vector(fretboardLength + headMarchLength, -(headWidth - fretboardWidthWide) / 2 + headWidth, 0), FreeCAD.Rotation(FreeCAD.Vector(0,0,1), -headCutoutAngle))
+                headCutout.Placement = FreeCAD.Placement(FreeCAD.Vector(fretboardLength + headMarchLength, -(headWidth - fretboardWidthWide) / 2 + headWidth, 0), FreeCAD.Rotation(App.Vector(0,0,1), -headCutoutAngle))
                 head = doc.addObject("Part::Cut", "head")
                 head.Base = headBase
                 head.Tool = headCutout
@@ -229,10 +577,119 @@ class Ui_Dialog(object):
             neck = doc.addObject("Part::MultiFuse", "neck")
             neck.Shapes = [fretboardR, head]
 
+            # Rotate the fretboard 90 degrees to fit body
+            neck.Placement=App.Placement(App.Vector(fretboardWidthWide / 2,bodyLength,bodyThickness - fretboardHeight), App.Rotation(App.Vector(0,0,1),90), App.Vector(0,0,0))
+
+
+            # Body
+            # Create sketch
+            App.activeDocument().addObject('Sketcher::SketchObject','Body')
+            App.activeDocument().Body.Placement = App.Placement(App.Vector(0.000000,0.000000,0.000000),App.Rotation(0.000000,0.000000,0.000000,1.000000))
+
+            # Add base line of body
+            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector(0.000000,0.000000,0),App.Vector(0.000000,bodyLength,0)))
+
+            # Draw first arc                                                        pos     x            y            z          orientation     radius                    radians
+            App.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(App.Vector(0.000000 + bodyWidth,bodyLowerBoutArcPosY,0),App.Vector(0,0,1),bodyLowerBoutArcRad),-1.570796,bodyConnectAngleRad))
+
+            # Draw second arc
+            App.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(App.Vector(0.000000 + bodyWidth,bodyUpperBoutArcPosY,0),App.Vector(0,0,1),bodyUpperBoutArcRad),-bodyConnectAngleRad,1.570796))
+
+            # Draw cut arc
+            App.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(App.Vector(bodyCutPosX + bodyWidth,bodyCutPosY,0),App.Vector(0,0,1),bodyCutRad),math.radians(180 - bodyConnectAngle),math.radians(180 + bodyConnectAngle)))
+
+            # Draw connect cut
+            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector(posOnCircleX( bodyUpperBoutArcRad, bodyConnectAngle, 0) + bodyWidth,posOnCircleY( bodyUpperBoutArcRad, bodyConnectAngle, bodyUpperBoutArcPosY),0),App.Vector(posOnCircleX( bodyCutRad, 180 + bodyConnectAngle, bodyCutPosX) + bodyWidth,posOnCircleY( bodyCutRad, 180 + bodyConnectAngle, bodyCutPosY),0)))
+            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector(posOnCircleX( bodyLowerBoutArcRad, -bodyConnectAngle, 0) + bodyWidth,posOnCircleY( bodyLowerBoutArcRad, -bodyConnectAngle, bodyLowerBoutArcPosY),0),App.Vector(posOnCircleX( bodyCutRad, 180 - bodyConnectAngle, bodyCutPosX) + bodyWidth,posOnCircleY( bodyCutRad, 180 - bodyConnectAngle, bodyCutPosY),0)))
+
+            # Connect arcs to baseline
+            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector( 0,bodyOffset+5,0),App.Vector( bodyWidth,bodyOffset,0)))
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',-1,1,6,1))
+
+            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector( 0,bodyLength - bodyOffset,0),App.Vector( bodyWidth,bodyLength - bodyOffset,0)))
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',7,1,0,2)) 
+
+            # Add al constraints
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',2,2,7,2)) #upper arc - offset
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',4,1,2,1)) #upper arc - line
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',3,1,4,2)) #line - cut arc
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',5,2,3,2)) #cut arc - line
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',5,1,1,2)) #line - lower arc
+            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',6,2,1,1)) #lower arc - offset
+
+            # Create body depth by padding
+            App.activeDocument().addObject("PartDesign::Pad","Pad")
+            App.activeDocument().Pad.Sketch = App.activeDocument().Body
+            App.activeDocument().Pad.Length = bodyThickness
+            App.ActiveDocument.recompute()
+            Gui.activeDocument().hide("Body")
+
+
+            # Mirror
+            App.activeDocument().addObject("PartDesign::Mirrored","bodyMirrored")
+            App.ActiveDocument.recompute()
+            App.activeDocument().bodyMirrored.Originals = [App.activeDocument().Pad,]
+            App.activeDocument().bodyMirrored.MirrorPlane = (App.activeDocument().Body, ["V_Axis"])
+            Gui.activeDocument().Pad.Visibility=False
+            Gui.ActiveDocument.bodyMirrored.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
+            Gui.ActiveDocument.bodyMirrored.DisplayMode=Gui.ActiveDocument.Pad.DisplayMode
+            App.ActiveDocument.bodyMirrored.Originals = [App.ActiveDocument.Pad,]
+            App.ActiveDocument.bodyMirrored.MirrorPlane = (App.ActiveDocument.Body,["V_Axis"])
+
+            # Create cutaway if chosen
+            if cutawayType == 0:
+                print "Nothing to do"
+                
+            elif cutawayType == 1:
+                App.ActiveDocument.addObject("Part::Cylinder","Cylinder") #Create cylinder
+                App.ActiveDocument.ActiveObject.Label = "cutAwayCylinder"
+                App.ActiveDocument.Cylinder.Placement=App.Placement(App.Vector(cutawayRad + fretboardWidthWide + cutawayOffset,bodyLength - cutawayDepth,0), App.Rotation(App.Vector(0,0,1),0), App.Vector(0,0,0))
+                App.ActiveDocument.getObject("Cylinder").Radius = cutawayRad
+                App.ActiveDocument.getObject("Cylinder").Height = bodyLength * 10
+                
+                #Cut
+                Gui.activateWorkbench("PartWorkbench")
+                App.activeDocument().addObject("Part::Cut","Cut")
+                App.activeDocument().Cut.Base = App.activeDocument().bodyMirrored
+                App.activeDocument().Cut.Tool = App.activeDocument().Cylinder
+                Gui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.bodyMirrored.ShapeColor
+                Gui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.bodyMirrored.DisplayMode
+
+
+            # Cut out space for pickups if chosen    
+            if pickups == True:
+                App.ActiveDocument.addObject("Part::Box","neckPickup")
+                App.ActiveDocument.ActiveObject.Label = "neckPickup"
+                App.ActiveDocument.neckPickup.Width = pickupHeight
+                App.ActiveDocument.neckPickup.Length = pickupWidth
+                App.ActiveDocument.neckPickup.Height = pickupDepth
+                App.ActiveDocument.neckPickup.Placement=App.Placement(App.Vector(-pickupWidth / 2,bodyLength - pickupNeckPosX,bodyThickness - pickupDepth), App.Rotation(App.Vector(0,0,1),0), App.Vector(0,0,0))
+                
+                App.ActiveDocument.addObject("Part::Box","bodyPickup")
+                App.ActiveDocument.ActiveObject.Label = "bodyPickup"
+                App.ActiveDocument.bodyPickup.Width = pickupHeight
+                App.ActiveDocument.bodyPickup.Length = pickupWidth
+                App.ActiveDocument.bodyPickup.Height = pickupDepth
+                App.ActiveDocument.bodyPickup.Placement=App.Placement(App.Vector(-pickupWidth / 2,bodyLength - pickupBodyPosX,bodyThickness - pickupDepth), App.Rotation(App.Vector(0,0,1),0), App.Vector(0,0,0))
+                
+                # Cut the pickups
+                App.activeDocument().addObject("Part::Cut","Cut001")
+                App.activeDocument().Cut001.Base = App.activeDocument().Cut
+                App.activeDocument().Cut001.Tool = App.activeDocument().neckPickup
+                Gui.activeDocument().hide('Cut')
+                Gui.activeDocument().hide('neckPickup')
+                
+                App.activeDocument().addObject("Part::Cut","guitarBody")
+                App.activeDocument().guitarBody.Base = App.activeDocument().Cut001
+                App.activeDocument().guitarBody.Tool = App.activeDocument().bodyPickup
+                Gui.activeDocument().hide('Cut001')
+                Gui.activeDocument().hide('bodyPickup')
+
+
             # Render
             doc.recompute()
-            FreeCADGui.activeDocument().activeView().viewAxometric()
-            FreeCADGui.SendMsgToActiveView("ViewFit")
+            Gui.activeDocument().activeView().viewAxometric()
+            Gui.SendMsgToActiveView("ViewFit")
 
 class guitarInput():
     def __init__(self):
