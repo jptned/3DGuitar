@@ -388,7 +388,7 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QtCore.QCoreFreeCADGuilication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label_fretboardLength_13.setText(_translate("Dialog", "Length"))
         self.bodyLength.setToolTip(_translate("Dialog", "<html><head/><body><p>Total length of the body</p></body></html>"))
@@ -536,8 +536,8 @@ class Ui_Dialog(object):
                 fretboardCutoutR.Height = fretboardHeight
                 fretboardCutoutL.Height = fretboardHeight
                 fretboardCutOutAngle = math.degrees(math.atan(((fretboardWidthWide - fretboardWidthNarrow) / 2) / fretboardLength))
-                fretboardCutoutR.Placement = FreeCAD.Placement(FreeCAD.Vector(0, fretboardWidthWide, 0), FreeCAD.Rotation(App.Vector(0,0,1), -fretboardCutOutAngle))
-                fretboardCutoutL.Placement = FreeCAD.Placement(FreeCAD.Vector(0, -fretboardWidthWide, 0), FreeCAD.Rotation(App.Vector(0,0,1), fretboardCutOutAngle))
+                fretboardCutoutR.Placement = FreeCAD.Placement(FreeCAD.Vector(0, fretboardWidthWide, 0), FreeCAD.Rotation(FreeCADGui.Vector(0,0,1), -fretboardCutOutAngle))
+                fretboardCutoutL.Placement = FreeCAD.Placement(FreeCAD.Vector(0, -fretboardWidthWide, 0), FreeCAD.Rotation(FreeCADGui.Vector(0,0,1), fretboardCutOutAngle))
                 fretboardHalf = doc.addObject("Part::Cut", "fretboardHalf")
                 fretboardHalf.Base = fretboardBase
                 fretboardHalf.Tool = fretboardCutoutR
@@ -568,7 +568,7 @@ class Ui_Dialog(object):
                 headCutout.Width = headWidth
                 headCutout.Height = headHeight
                 headCutoutAngle = math.degrees(math.atan(headWidth / (headLength - headMarchLength)))
-                headCutout.Placement = FreeCAD.Placement(FreeCAD.Vector(fretboardLength + headMarchLength, -(headWidth - fretboardWidthWide) / 2 + headWidth, 0), FreeCAD.Rotation(App.Vector(0,0,1), -headCutoutAngle))
+                headCutout.Placement = FreeCAD.Placement(FreeCAD.Vector(fretboardLength + headMarchLength, -(headWidth - fretboardWidthWide) / 2 + headWidth, 0), FreeCAD.Rotation(FreeCADGui.Vector(0,0,1), -headCutoutAngle))
                 head = doc.addObject("Part::Cut", "head")
                 head.Base = headBase
                 head.Tool = headCutout
@@ -578,110 +578,110 @@ class Ui_Dialog(object):
             neck.Shapes = [fretboardR, head]
 
             # Rotate the fretboard 90 degrees to fit body
-            neck.Placement=App.Placement(App.Vector(fretboardWidthWide / 2,bodyLength,bodyThickness - fretboardHeight), App.Rotation(App.Vector(0,0,1),90), App.Vector(0,0,0))
+            neck.Placement=FreeCADGui.Placement(FreeCADGui.Vector(fretboardWidthWide / 2,bodyLength,bodyThickness - fretboardHeight), FreeCADGui.Rotation(FreeCADGui.Vector(0,0,1),90), FreeCADGui.Vector(0,0,0))
 
 
             # Body
             # Create sketch
-            App.activeDocument().addObject('Sketcher::SketchObject','Body')
-            App.activeDocument().Body.Placement = App.Placement(App.Vector(0.000000,0.000000,0.000000),App.Rotation(0.000000,0.000000,0.000000,1.000000))
+            FreeCADGui.activeDocument().addObject('Sketcher::SketchObject','Body')
+            FreeCADGui.activeDocument().Body.Placement = FreeCADGui.Placement(FreeCADGui.Vector(0.000000,0.000000,0.000000),FreeCADGui.Rotation(0.000000,0.000000,0.000000,1.000000))
 
             # Add base line of body
-            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector(0.000000,0.000000,0),App.Vector(0.000000,bodyLength,0)))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.Line(FreeCADGui.Vector(0.000000,0.000000,0),FreeCADGui.Vector(0.000000,bodyLength,0)))
 
             # Draw first arc                                                        pos     x            y            z          orientation     radius                    radians
-            App.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(App.Vector(0.000000 + bodyWidth,bodyLowerBoutArcPosY,0),App.Vector(0,0,1),bodyLowerBoutArcRad),-1.570796,bodyConnectAngleRad))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(FreeCADGui.Vector(0.000000 + bodyWidth,bodyLowerBoutArcPosY,0),FreeCADGui.Vector(0,0,1),bodyLowerBoutArcRad),-1.570796,bodyConnectAngleRad))
 
             # Draw second arc
-            App.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(App.Vector(0.000000 + bodyWidth,bodyUpperBoutArcPosY,0),App.Vector(0,0,1),bodyUpperBoutArcRad),-bodyConnectAngleRad,1.570796))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(FreeCADGui.Vector(0.000000 + bodyWidth,bodyUpperBoutArcPosY,0),FreeCADGui.Vector(0,0,1),bodyUpperBoutArcRad),-bodyConnectAngleRad,1.570796))
 
             # Draw cut arc
-            App.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(App.Vector(bodyCutPosX + bodyWidth,bodyCutPosY,0),App.Vector(0,0,1),bodyCutRad),math.radians(180 - bodyConnectAngle),math.radians(180 + bodyConnectAngle)))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.ArcOfCircle(Part.Circle(FreeCADGui.Vector(bodyCutPosX + bodyWidth,bodyCutPosY,0),FreeCADGui.Vector(0,0,1),bodyCutRad),math.radians(180 - bodyConnectAngle),math.radians(180 + bodyConnectAngle)))
 
             # Draw connect cut
-            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector(posOnCircleX( bodyUpperBoutArcRad, bodyConnectAngle, 0) + bodyWidth,posOnCircleY( bodyUpperBoutArcRad, bodyConnectAngle, bodyUpperBoutArcPosY),0),App.Vector(posOnCircleX( bodyCutRad, 180 + bodyConnectAngle, bodyCutPosX) + bodyWidth,posOnCircleY( bodyCutRad, 180 + bodyConnectAngle, bodyCutPosY),0)))
-            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector(posOnCircleX( bodyLowerBoutArcRad, -bodyConnectAngle, 0) + bodyWidth,posOnCircleY( bodyLowerBoutArcRad, -bodyConnectAngle, bodyLowerBoutArcPosY),0),App.Vector(posOnCircleX( bodyCutRad, 180 - bodyConnectAngle, bodyCutPosX) + bodyWidth,posOnCircleY( bodyCutRad, 180 - bodyConnectAngle, bodyCutPosY),0)))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.Line(FreeCADGui.Vector(posOnCircleX( bodyUpperBoutArcRad, bodyConnectAngle, 0) + bodyWidth,posOnCircleY( bodyUpperBoutArcRad, bodyConnectAngle, bodyUpperBoutArcPosY),0),FreeCADGui.Vector(posOnCircleX( bodyCutRad, 180 + bodyConnectAngle, bodyCutPosX) + bodyWidth,posOnCircleY( bodyCutRad, 180 + bodyConnectAngle, bodyCutPosY),0)))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.Line(FreeCADGui.Vector(posOnCircleX( bodyLowerBoutArcRad, -bodyConnectAngle, 0) + bodyWidth,posOnCircleY( bodyLowerBoutArcRad, -bodyConnectAngle, bodyLowerBoutArcPosY),0),FreeCADGui.Vector(posOnCircleX( bodyCutRad, 180 - bodyConnectAngle, bodyCutPosX) + bodyWidth,posOnCircleY( bodyCutRad, 180 - bodyConnectAngle, bodyCutPosY),0)))
 
             # Connect arcs to baseline
-            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector( 0,bodyOffset+5,0),App.Vector( bodyWidth,bodyOffset,0)))
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',-1,1,6,1))
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.Line(FreeCADGui.Vector( 0,bodyOffset+5,0),FreeCADGui.Vector( bodyWidth,bodyOffset,0)))
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',-1,1,6,1))
 
-            App.ActiveDocument.Body.addGeometry(Part.Line(App.Vector( 0,bodyLength - bodyOffset,0),App.Vector( bodyWidth,bodyLength - bodyOffset,0)))
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',7,1,0,2)) 
+            FreeCADGui.ActiveDocument.Body.addGeometry(Part.Line(FreeCADGui.Vector( 0,bodyLength - bodyOffset,0),FreeCADGui.Vector( bodyWidth,bodyLength - bodyOffset,0)))
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',7,1,0,2)) 
 
             # Add al constraints
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',2,2,7,2)) #upper arc - offset
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',4,1,2,1)) #upper arc - line
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',3,1,4,2)) #line - cut arc
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',5,2,3,2)) #cut arc - line
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',5,1,1,2)) #line - lower arc
-            App.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',6,2,1,1)) #lower arc - offset
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',2,2,7,2)) #upper arc - offset
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',4,1,2,1)) #upper arc - line
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',3,1,4,2)) #line - cut arc
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',5,2,3,2)) #cut arc - line
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',5,1,1,2)) #line - lower arc
+            FreeCADGui.ActiveDocument.Body.addConstraint(Sketcher.Constraint('Coincident',6,2,1,1)) #lower arc - offset
 
             # Create body depth by padding
-            App.activeDocument().addObject("PartDesign::Pad","Pad")
-            App.activeDocument().Pad.Sketch = App.activeDocument().Body
-            App.activeDocument().Pad.Length = bodyThickness
-            App.ActiveDocument.recompute()
+            FreeCADGui.activeDocument().addObject("PartDesign::Pad","Pad")
+            FreeCADGui.activeDocument().Pad.Sketch = FreeCADGui.activeDocument().Body
+            FreeCADGui.activeDocument().Pad.Length = bodyThickness
+            FreeCADGui.ActiveDocument.recompute()
             Gui.activeDocument().hide("Body")
 
 
             # Mirror
-            App.activeDocument().addObject("PartDesign::Mirrored","bodyMirrored")
-            App.ActiveDocument.recompute()
-            App.activeDocument().bodyMirrored.Originals = [App.activeDocument().Pad,]
-            App.activeDocument().bodyMirrored.MirrorPlane = (App.activeDocument().Body, ["V_Axis"])
+            FreeCADGui.activeDocument().addObject("PartDesign::Mirrored","bodyMirrored")
+            FreeCADGui.ActiveDocument.recompute()
+            FreeCADGui.activeDocument().bodyMirrored.Originals = [FreeCADGui.activeDocument().Pad,]
+            FreeCADGui.activeDocument().bodyMirrored.MirrorPlane = (FreeCADGui.activeDocument().Body, ["V_Axis"])
             Gui.activeDocument().Pad.Visibility=False
             Gui.ActiveDocument.bodyMirrored.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
             Gui.ActiveDocument.bodyMirrored.DisplayMode=Gui.ActiveDocument.Pad.DisplayMode
-            App.ActiveDocument.bodyMirrored.Originals = [App.ActiveDocument.Pad,]
-            App.ActiveDocument.bodyMirrored.MirrorPlane = (App.ActiveDocument.Body,["V_Axis"])
+            FreeCADGui.ActiveDocument.bodyMirrored.Originals = [FreeCADGui.ActiveDocument.Pad,]
+            FreeCADGui.ActiveDocument.bodyMirrored.MirrorPlane = (FreeCADGui.ActiveDocument.Body,["V_Axis"])
 
             # Create cutaway if chosen
             if cutawayType == 0:
                 print "Nothing to do"
                 
             elif cutawayType == 1:
-                App.ActiveDocument.addObject("Part::Cylinder","Cylinder") #Create cylinder
-                App.ActiveDocument.ActiveObject.Label = "cutAwayCylinder"
-                App.ActiveDocument.Cylinder.Placement=App.Placement(App.Vector(cutawayRad + fretboardWidthWide + cutawayOffset,bodyLength - cutawayDepth,0), App.Rotation(App.Vector(0,0,1),0), App.Vector(0,0,0))
-                App.ActiveDocument.getObject("Cylinder").Radius = cutawayRad
-                App.ActiveDocument.getObject("Cylinder").Height = bodyLength * 10
+                FreeCADGui.ActiveDocument.addObject("Part::Cylinder","Cylinder") #Create cylinder
+                FreeCADGui.ActiveDocument.ActiveObject.Label = "cutAwayCylinder"
+                FreeCADGui.ActiveDocument.Cylinder.Placement=FreeCADGui.Placement(FreeCADGui.Vector(cutawayRad + fretboardWidthWide + cutawayOffset,bodyLength - cutawayDepth,0), FreeCADGui.Rotation(FreeCADGui.Vector(0,0,1),0), FreeCADGui.Vector(0,0,0))
+                FreeCADGui.ActiveDocument.getObject("Cylinder").Radius = cutawayRad
+                FreeCADGui.ActiveDocument.getObject("Cylinder").Height = bodyLength * 10
                 
                 #Cut
                 Gui.activateWorkbench("PartWorkbench")
-                App.activeDocument().addObject("Part::Cut","Cut")
-                App.activeDocument().Cut.Base = App.activeDocument().bodyMirrored
-                App.activeDocument().Cut.Tool = App.activeDocument().Cylinder
+                FreeCADGui.activeDocument().addObject("Part::Cut","Cut")
+                FreeCADGui.activeDocument().Cut.Base = FreeCADGui.activeDocument().bodyMirrored
+                FreeCADGui.activeDocument().Cut.Tool = FreeCADGui.activeDocument().Cylinder
                 Gui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.bodyMirrored.ShapeColor
                 Gui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.bodyMirrored.DisplayMode
 
 
             # Cut out space for pickups if chosen    
             if pickups == True:
-                App.ActiveDocument.addObject("Part::Box","neckPickup")
-                App.ActiveDocument.ActiveObject.Label = "neckPickup"
-                App.ActiveDocument.neckPickup.Width = pickupHeight
-                App.ActiveDocument.neckPickup.Length = pickupWidth
-                App.ActiveDocument.neckPickup.Height = pickupDepth
-                App.ActiveDocument.neckPickup.Placement=App.Placement(App.Vector(-pickupWidth / 2,bodyLength - pickupNeckPosX,bodyThickness - pickupDepth), App.Rotation(App.Vector(0,0,1),0), App.Vector(0,0,0))
+                FreeCADGui.ActiveDocument.addObject("Part::Box","neckPickup")
+                FreeCADGui.ActiveDocument.ActiveObject.Label = "neckPickup"
+                FreeCADGui.ActiveDocument.neckPickup.Width = pickupHeight
+                FreeCADGui.ActiveDocument.neckPickup.Length = pickupWidth
+                FreeCADGui.ActiveDocument.neckPickup.Height = pickupDepth
+                FreeCADGui.ActiveDocument.neckPickup.Placement=FreeCADGui.Placement(FreeCADGui.Vector(-pickupWidth / 2,bodyLength - pickupNeckPosX,bodyThickness - pickupDepth), FreeCADGui.Rotation(FreeCADGui.Vector(0,0,1),0), FreeCADGui.Vector(0,0,0))
                 
-                App.ActiveDocument.addObject("Part::Box","bodyPickup")
-                App.ActiveDocument.ActiveObject.Label = "bodyPickup"
-                App.ActiveDocument.bodyPickup.Width = pickupHeight
-                App.ActiveDocument.bodyPickup.Length = pickupWidth
-                App.ActiveDocument.bodyPickup.Height = pickupDepth
-                App.ActiveDocument.bodyPickup.Placement=App.Placement(App.Vector(-pickupWidth / 2,bodyLength - pickupBodyPosX,bodyThickness - pickupDepth), App.Rotation(App.Vector(0,0,1),0), App.Vector(0,0,0))
+                FreeCADGui.ActiveDocument.addObject("Part::Box","bodyPickup")
+                FreeCADGui.ActiveDocument.ActiveObject.Label = "bodyPickup"
+                FreeCADGui.ActiveDocument.bodyPickup.Width = pickupHeight
+                FreeCADGui.ActiveDocument.bodyPickup.Length = pickupWidth
+                FreeCADGui.ActiveDocument.bodyPickup.Height = pickupDepth
+                FreeCADGui.ActiveDocument.bodyPickup.Placement=FreeCADGui.Placement(FreeCADGui.Vector(-pickupWidth / 2,bodyLength - pickupBodyPosX,bodyThickness - pickupDepth), FreeCADGui.Rotation(FreeCADGui.Vector(0,0,1),0), FreeCADGui.Vector(0,0,0))
                 
                 # Cut the pickups
-                App.activeDocument().addObject("Part::Cut","Cut001")
-                App.activeDocument().Cut001.Base = App.activeDocument().Cut
-                App.activeDocument().Cut001.Tool = App.activeDocument().neckPickup
+                FreeCADGui.activeDocument().addObject("Part::Cut","Cut001")
+                FreeCADGui.activeDocument().Cut001.Base = FreeCADGui.activeDocument().Cut
+                FreeCADGui.activeDocument().Cut001.Tool = FreeCADGui.activeDocument().neckPickup
                 Gui.activeDocument().hide('Cut')
                 Gui.activeDocument().hide('neckPickup')
                 
-                App.activeDocument().addObject("Part::Cut","guitarBody")
-                App.activeDocument().guitarBody.Base = App.activeDocument().Cut001
-                App.activeDocument().guitarBody.Tool = App.activeDocument().bodyPickup
+                FreeCADGui.activeDocument().addObject("Part::Cut","guitarBody")
+                FreeCADGui.activeDocument().guitarBody.Base = FreeCADGui.activeDocument().Cut001
+                FreeCADGui.activeDocument().guitarBody.Tool = FreeCADGui.activeDocument().bodyPickup
                 Gui.activeDocument().hide('Cut001')
                 Gui.activeDocument().hide('bodyPickup')
 
