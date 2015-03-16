@@ -1,22 +1,12 @@
-# -*- coding: utf-8 -*-
- 
-# Form implementation generated from reading ui file 'v1.ui'
-#
-#      by: PyQt5 UI code generator
-#      WARNING! All changes made in this file will be lost!
-
 from PySide import QtCore, QtGui
 import Draft, math, Part, Sketcher, FreeCAD, FreeCADGui
 
 class Ui_Dialog(object):
     def __init__(self):
-        self.didRun = False;
+        self.didRun = 0;
 
     def setupUi(self, Dialog):
-        if (self.didRun):
-            print ("Did run!")
-        else:
-            print ("Didn't run!")
+        self.didRun = self.didRun + 1
         Dialog.setObjectName("3D Guitar Designer")
         Dialog.resize(527, 420)
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
@@ -712,11 +702,14 @@ class Ui_Dialog(object):
             FreeCADGui.SendMsgToActiveView("ViewFit")
 
 class guitarInput():
-    def __init__(self):
-        d = QtGui.QDialog()
-        d.ui = Ui_Dialog()
-        d.ui.setupUi(d)
-        d.exec_()
+    def firstOpen(self):
+        self.d = QtGui.QDialog()
+        self.d.ui = Ui_Dialog()
+        self.d.ui.setupUi(self.d)
+        self.d.exec_()
 
     def reOpen(self):
-        d.exec_()
+        self.d.exec_()
+
+    def hide(self):
+        self.d.hide()

@@ -1,15 +1,26 @@
 import FreeCAD, FreeCADGui
 
+windowCreated = 0
+
 class NewGuitar:
 	"Test command"
 	def Activated(self):
-		import neckParameters
-		neckCreation = neckParameters.guitarInput()
+		global windowCreated
+		global neckParameters
+		global neckObject
+		if windowCreated == 0:
+			import neckParameters
+			neckObject = neckParameters.guitarInput()
+			neckObject.firstOpen()
+		else:
+			neckObject.reOpen()
+			
+		windowCreated = 1
 
 	def GetResources(self):
 		return {
 			'Pixmap'  : 'Std_Tool1', 
-			'MenuText': '3D Test', 
+			'MenuText': 'Create new guitar', 
 			'ToolTip': 'Create new guitar'
 		}
 
