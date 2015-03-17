@@ -131,7 +131,7 @@ class Ui_Dialog(object):
         self.fretboardWidthWide.setMinimum(0.1)
         self.fretboardWidthWide.setMaximum(1000.0)
         self.fretboardWidthWide.setSingleStep(0.1)
-        self.fretboardWidthWide.setProperty("value", 15.0)
+        self.fretboardWidthWide.setProperty("value", 80.0)
         self.fretboardWidthWide.setObjectName("fretboardWidthWide")
         self.verticalLayout_3.addWidget(self.fretboardWidthWide)
         self.label_fretboardLength_4 = QtGui.QLabel(self.layoutWidget)
