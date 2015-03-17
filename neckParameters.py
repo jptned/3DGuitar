@@ -650,7 +650,6 @@ class Ui_Dialog(object):
                 FreeCAD.ActiveDocument.getObject("Cylinder").Height = bodyLength * 10
 
                 #Cut
-                FreeCADGui.activateWorkbench("PartWorkbench")
                 FreeCAD.activeDocument().addObject("Part::Cut","Cut")
                 FreeCAD.activeDocument().Cut.Base = FreeCAD.activeDocument().bodyMirrored
                 FreeCAD.activeDocument().Cut.Tool = FreeCAD.activeDocument().Cylinder
@@ -694,7 +693,6 @@ class Ui_Dialog(object):
                 FreeCAD.activeDocument().FreeCADGuitarBody.Tool = FreeCAD.activeDocument().bodyPickup
                 FreeCADGui.activeDocument().hide('CutPickup')
                 FreeCADGui.activeDocument().hide('bodyPickup')
-
 
             # Render
             doc.recompute()
