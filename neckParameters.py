@@ -477,7 +477,7 @@ class Ui_Dialog(object):
             bodyCutPosY             = ((bodyLength - 2 * bodyOffset) / 2) * math.sqrt(arcRatio) - bodyOffset #Position Y of the middle circle - o
 
             #Cutout angle(degree to radian)
-            bodyConnectAngle        = 30.000000 #The length of the middle circle part
+            bodyConnectAngle        = self.bodyConnectAngle.value() #The length of the middle circle part
             bodyConnectAngleRad     = math.radians(bodyConnectAngle)
 
             # Cutaway
