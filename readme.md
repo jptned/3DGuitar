@@ -2,6 +2,8 @@
 
 Module for FreeCAD, which creates a guitar in 3D based on a set of user controlled parametrers. This module is the result of a school project. 
 
+The  discussion on the FreeCAD forum regarding this module can be found [here](https://forum.freecadweb.org/viewtopic.php?f=22&t=13394).
+
 **Note: This module is not being maintained**
 
 ## Requirements
